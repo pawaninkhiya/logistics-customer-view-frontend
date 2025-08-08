@@ -1,9 +1,10 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/contexts/QueryProvider";
 import { AuthProvider } from "@/contexts/AuthProvider";
-
+import GlobalLoading from "@/components/GlobalLoading";
 
 const sora = Sora({
     subsets: ["latin"],
@@ -13,7 +14,7 @@ const sora = Sora({
 
 export const metadata: Metadata = {
     title: "logistics-customer-view",
-    description: "A streamlined customer portal for tracking shipments, viewing delivery status, and managing logistics requests in real-time.",
+    description: "A streamlined customer portal...",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -22,13 +23,59 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className={`${sora.variable} ${sora.className} antialiased`}>
                 <QueryProvider>
                     <AuthProvider>
-                        {children}
+                        <GlobalLoadingWrapper>
+                            {children}
+                        </GlobalLoadingWrapper>
                     </AuthProvider>
                 </QueryProvider>
             </body>
         </html>
     );
 }
+
+function GlobalLoadingWrapper({ children }: { children: React.ReactNode }) {
+    return (
+        <>
+            <GlobalLoading />
+            {children}
+        </>
+    );
+}
+// import type { Metadata } from "next";
+// import { Poppins, Sora } from "next/font/google";
+// import "./globals.css";
+// import { QueryProvider } from "@/contexts/QueryProvider";
+// import { AuthProvider } from "@/contexts/AuthProvider";
+// import { Suspense } from "react";
+// import GlobalLoading from "@/components/GlobalLoading";
+
+
+// const sora = Sora({
+//     subsets: ["latin"],
+//     weight: ["300", "400", "500", "600", "700"],
+//     variable: "--font-sora",
+// });
+
+// export const metadata: Metadata = {
+//     title: "logistics-customer-view",
+//     description: "A streamlined customer portal for tracking shipments, viewing delivery status, and managing logistics requests in real-time.",
+// };
+
+// export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+//     return (
+//         <html lang="en">
+//             <body className={`${sora.variable} ${sora.className} antialiased`}>
+//                 <QueryProvider>
+//                     <AuthProvider>
+//                         <Suspense fallback={<GlobalLoading />}>
+//                             {children}
+//                         </Suspense>
+//                     </AuthProvider>
+//                 </QueryProvider>
+//             </body>
+//         </html>
+//     );
+// }
 
 
 // import type { Metadata } from "next";

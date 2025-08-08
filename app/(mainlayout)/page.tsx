@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { Icons } from "@assets/assets";
 import { Loader } from "@googlemaps/js-api-loader";
 import { useRouter } from "next/navigation";
 import CustomSelect from "@components/ui/CustomSelect";
-import PrivateRoute from "@/components/PrivateRoute";
+import { useGetAllMaterialQuery } from "@/services/materials/materials";
 
 interface LocationData {
     from: string;
@@ -21,14 +21,6 @@ interface LocationData {
     eta_pickup: string;
 }
 
-const materialOptions = [
-    { label: "Documents", value: "Documents" },
-    { label: "Electronics", value: "Electronics" },
-    { label: "Clothing", value: "Clothing" },
-    { label: "Food", value: "Food" },
-    { label: "Furniture", value: "Furniture" },
-    { label: "Other", value: "Other" },
-];
 
 const unitOptions = [
     { label: "kg", value: "kg" },
@@ -37,6 +29,7 @@ const unitOptions = [
 ];
 
 export default function HomePage() {
+    const { data } = useGetAllMaterialQuery()
     const router = useRouter();
     const [formData, setFormData] = useState<LocationData>({
         from: "",
@@ -67,6 +60,13 @@ export default function HomePage() {
     const geocoder = useRef<google.maps.Geocoder | null>(null);
     const markers = useRef<{ from: google.maps.Marker | null; to: google.maps.Marker | null; }>({ from: null, to: null });
     const roadHighlight = useRef<google.maps.Polyline | null>(null);
+
+
+
+    const materialOptions = useMemo(() => data?.data.map(({ _id, name }: any) => ({
+        label: name,
+        value: _id
+    })) || [], [data?.data]);
 
     // Initialize Google Maps
     useEffect(() => {
@@ -405,7 +405,6 @@ export default function HomePage() {
     };
 
     return (
-        <PrivateRoute>
             <div className="flex flex-col lg:flex-row gap-6 w-full">
                 {/* Left Column */}
                 <div className="flex-1 bg-white rounded-xl ">
@@ -600,7 +599,7 @@ export default function HomePage() {
                         <div className="flex justify-end mt-6">
                             <button
                                 type="submit"
-                                className="px-6 py-3 bg-black hover:bg-black/80 text-white font-medium rounded-md shadow-sm transition-colors duration-200 ease-in-out"
+                                className="px-6 py-3 bg-black hover:bg-black/80 text-white font-medium rounded-md shadow-sm transition-colors duration-200 ease-in-out text-sm"
                                 disabled={loading}
                             >
                                 {loading ? "Processing..." : "Continue to Confirm"}
@@ -675,6 +674,5 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-        </PrivateRoute>
     );
 }

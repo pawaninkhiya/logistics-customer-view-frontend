@@ -2,8 +2,10 @@
 import { Icons } from '@/assets/assets'
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthProvider'
 
 const Navbar = () => {
+    const {logout } = useAuth();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
@@ -38,8 +40,8 @@ const Navbar = () => {
                             Payment
                         </Link>
                         <div className="flex gap-2 items-center">
-                             <div className='h-8 border-l-2'></div>
-                            <button className="transition-colors bg-black rounded p-2 text-white ">
+                            <div className='h-8 border-l-2'></div>
+                            <button onClick={()=>logout()} className="transition-colors cursor-pointer bg-black rounded p-2 text-white ">
                                 <Icons.Logout />
                             </button>
                         </div>

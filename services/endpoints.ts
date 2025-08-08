@@ -7,3 +7,8 @@ export const CUSTOMER_ENDPOINTS = {
     UPDATE: '/customer/', 
     GET_BY_ID: (id: string) => `/users/${id}`,
 };
+
+
+export const MATERIAL_TYPES = {
+    GET_ALL: "/material_box",
+};

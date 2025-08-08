@@ -12,7 +12,12 @@ type AuthContextType = {
     isAuthenticated: boolean;
     isLoading: boolean;
     loginMutation: UseMutationResult<string, Error, string, unknown>;
-    verifyOTPMutation: UseMutationResult<UserData, Error, { contact_no: number; verification_code: number }, unknown>;
+    verifyOTPMutation: UseMutationResult<
+        UserData,
+        Error,
+        { contact_no: number; verification_code: number },
+        unknown
+    >;
     logout: () => void;
 };
 
@@ -25,25 +30,43 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        const userData = localStorage.getItem('user');
-
-        if (token && userData) {
+        const initializeAuth = async () => {
             try {
-                setUser(JSON.parse(userData));
-                if (pathname === '/login') {
-                    router.push('/');
+                const token = localStorage.getItem('token');
+                const userData = localStorage.getItem('user');
+
+                if (token && userData) {
+                    setUser(JSON.parse(userData));
                 }
             } catch (error) {
+                console.error('Failed to parse user data', error);
                 clearAuthData();
+            } finally {
+                setIsLoading(false);
             }
-        } else {
-            if (pathname.startsWith('/')) {
-                router.push('/login');
-            }
+        };
+
+        initializeAuth();
+    }, []);
+
+    // Handle route protection
+    useEffect(() => {
+        if (isLoading) return;
+
+        const publicRoutes = ['/login'];
+        const isPublicRoute = publicRoutes.includes(pathname);
+        const isAuthenticated = !!user;
+
+        if (isAuthenticated && isPublicRoute) {
+            router.push('/dashboard'); 
+            return;
         }
-        setIsLoading(false);
-    }, [pathname, router]);
+
+        if (!isAuthenticated && !isPublicRoute) {
+            router.push('/login'); // Not logged in, block access to protected route
+            return;
+        }
+    }, [isLoading, user, pathname, router]);
 
     const clearAuthData = () => {
         localStorage.removeItem('token');
@@ -54,11 +77,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const loginMutation = useMutation({
         mutationKey: ['send-otp'],
         mutationFn: async (phone: string) => await login({ contact_no: phone }),
+        onError: (error) => {
+            console.error('Login error:', error);
+        },
     });
 
     const verifyOTPMutation = useMutation({
         mutationKey: ['verify-otp'],
-        mutationFn: async ({ verification_code, contact_no }: { contact_no: number; verification_code: number }) => {
+        mutationFn: async ({
+            verification_code,
+            contact_no,
+        }: {
+            contact_no: number;
+            verification_code: number;
+        }) => {
             const response = await verifyOTP({ contact_no, verification_code });
             localStorage.setItem('token', response.access_token);
             localStorage.setItem('user', JSON.stringify(response.data));
@@ -67,6 +99,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
         onSuccess: () => {
             router.push('/');
+        },
+        onError: (error) => {
+            console.error('OTP verification error:', error);
         },
     });
 

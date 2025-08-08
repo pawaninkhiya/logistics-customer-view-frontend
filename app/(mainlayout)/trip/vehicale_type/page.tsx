@@ -1,6 +1,5 @@
 'use client';
 
-import PrivateRoute from '@/components/PrivateRoute';
 import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
@@ -47,32 +46,31 @@ const SelectVehicaleType = () => {
     if (error) return <p>{error}</p>;
 
     return (
-        <PrivateRoute>
-            <div className="flex flex-col gap-4 p-6">
-                <h1 className="text-xl font-bold">Select Vehicle Type</h1>
+        
+        <div className="flex flex-col gap-4 p-6">
+            <h1 className="text-xl font-bold">Select Vehicle Type</h1>
 
-                <button
-                    onClick={() => handleSelectVehicle('Truck')}
-                    className="bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                    Truck
-                </button>
+            <button
+                onClick={() => handleSelectVehicle('Truck')}
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+                Truck
+            </button>
 
-                <button
-                    onClick={() => handleSelectVehicle('Mini Van')}
-                    className="bg-green-500 text-white px-4 py-2 rounded"
-                >
-                    Mini Van
-                </button>
+            <button
+                onClick={() => handleSelectVehicle('Mini Van')}
+                className="bg-green-500 text-white px-4 py-2 rounded"
+            >
+                Mini Van
+            </button>
 
-                <button
-                    onClick={() => handleSelectVehicle('Tempo')}
-                    className="bg-purple-500 text-white px-4 py-2 rounded"
-                >
-                    Tempo
-                </button>
-            </div>
-        </PrivateRoute>
+            <button
+                onClick={() => handleSelectVehicle('Tempo')}
+                className="bg-purple-500 text-white px-4 py-2 rounded"
+            >
+                Tempo
+            </button>
+        </div>
     );
 };
 
