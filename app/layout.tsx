@@ -1,24 +1,30 @@
 import type { Metadata } from "next";
 import { Poppins, Sora } from "next/font/google";
 import "./globals.css";
+import { QueryProvider } from "@/contexts/QueryProvider";
+import { AuthProvider } from "@/contexts/AuthProvider";
 
 
 const sora = Sora({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-sora",
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700"],
+    variable: "--font-sora",
 });
 
 export const metadata: Metadata = {
-  title: "logistics-customer-view",
-  description: "A streamlined customer portal for tracking shipments, viewing delivery status, and managing logistics requests in real-time.",
+    title: "logistics-customer-view",
+    description: "A streamlined customer portal for tracking shipments, viewing delivery status, and managing logistics requests in real-time.",
 };
 
-export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
             <body className={`${sora.variable} ${sora.className} antialiased`}>
-                {children}
+                <QueryProvider>
+                    <AuthProvider>
+                        {children}
+                    </AuthProvider>
+                </QueryProvider>
             </body>
         </html>
     );

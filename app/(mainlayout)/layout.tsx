@@ -1,7 +1,13 @@
+import Navbar from "@/components/Navbar";
+import Container from "@/components/ui/Container";
+
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     return (
-        <>
-            <main>{children}</main>
-        </>
+        <Container className="px-4 py-8">
+            <Navbar />
+            <div className="flex flex-1">
+                {children}
+            </div>
+        </Container>
     );
 }

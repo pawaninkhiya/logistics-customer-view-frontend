@@ -1,0 +1,23 @@
+import { api } from "@/services/apiClient";
+import { CUSTOMER_ENDPOINTS } from "@/services/endpoints";
+import { LoginResponse } from "@/types/userTypes";
+// import { CustomerResponse } from "@/types/customersTypes";
+
+export const login = async (credentials: { contact_no: string }): Promise<any> => {
+    const response = await api.post(CUSTOMER_ENDPOINTS.LOGIN, credentials);
+    return response.data;
+};
+
+export const verifyOTP = async (data: { contact_no: number, verification_code: number }): Promise<LoginResponse> => {
+    const response = await api.post(CUSTOMER_ENDPOINTS.VERIFY_OTP, { fcm_token: "sjakhask", ...data });
+    return response.data;
+};
+
+export const updateCustomer = async (formData: FormData): Promise<any> => {
+    const response = await api.put(CUSTOMER_ENDPOINTS.UPDATE, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    });
+    return response.data;
+};

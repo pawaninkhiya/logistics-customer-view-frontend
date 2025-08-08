@@ -16,3 +16,12 @@ body {
     background: var(--background);
     font-family: var(--font-sora);
 }
+
+.scroll-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}
