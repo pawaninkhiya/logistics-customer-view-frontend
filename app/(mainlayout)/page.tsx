@@ -405,274 +405,274 @@ export default function HomePage() {
     };
 
     return (
-            <div className="flex flex-col lg:flex-row gap-6 w-full">
-                {/* Left Column */}
-                <div className="flex-1 bg-white rounded-xl ">
-                    <form onSubmit={handleSubmit} className=" space-y-4">
-                        <div className="flex flex-col md:flex-row gap-4">
-                            {/* Pickup Location */}
-                            <div className="flex-1 relative shadow p-5 rounded-md border-gray-200 border">
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Pickup Location*
-                                </label>
-                                <div className="relative">
-                                    <input
-                                        ref={fromInputRef}
-                                        type="text"
-                                        value={formData.from}
-                                        onChange={(e) => handleInputChange(e, "from")}
-                                        onFocus={() => setActiveField("from")}
-                                        placeholder="Enter pickup address"
-                                        className="w-full px-4 py-3 text-xs placeholder:text-xs sm:placeholder:text-sm sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium placeholder:font-medium"
-                                        required
-                                    />
-                                    {formData.from && (
-                                        <button
-                                            type="button"
-                                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                                            onClick={() => clearLocation("from")}
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    )}
-                                    {activeField === "from" && predictions.length > 0 && (
-                                        <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-lg border border-gray-200">
-                                            <ul className="py-1 max-h-60 overflow-auto">
-                                                {predictions.map((prediction) => (
-                                                    <li
-                                                        key={prediction.place_id}
-                                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                                                        onClick={() =>
-                                                            handlePlaceSelect(prediction.place_id, "from")
-                                                        }
-                                                    >
-                                                        {prediction.description}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* Delivery Location */}
-                            <div className="flex-1 relative shadow p-5 rounded-md border-gray-200 border">
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Delivery Location*
-                                </label>
-                                <div className="relative">
-                                    <input
-                                        ref={toInputRef}
-                                        type="text"
-                                        value={formData.to}
-                                        onChange={(e) => handleInputChange(e, "to")}
-                                        onFocus={() => setActiveField("to")}
-                                        placeholder="Enter delivery address"
-                                        className="w-full px-4 py-3 text-xs placeholder:text-xs sm:placeholder:text-sm sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium placeholder:font-medium"
-                                        required
-                                    />
-                                    {formData.to && (
-                                        <button
-                                            type="button"
-                                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                                            onClick={() => clearLocation("to")}
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    )}
-                                    {activeField === "to" && predictions.length > 0 && (
-                                        <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-lg border border-gray-200">
-                                            <ul className="py-1 max-h-60 overflow-auto">
-                                                {predictions.map((prediction) => (
-                                                    <li
-                                                        key={prediction.place_id}
-                                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                                                        onClick={() =>
-                                                            handlePlaceSelect(prediction.place_id, "to")
-                                                        }
-                                                    >
-                                                        {prediction.description}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Shipment Details */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                            <div className="shadow p-5 rounded-md border-gray-200 border">
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Material Type*
-                                </label>
-                                <CustomSelect
-                                    id="material"
-                                    label="Material Type"
-                                    options={materialOptions}
-                                    value={formData.material}
-                                    setFieldValue={(value) => handleSelectChange("material", value)}
-                                    isLabel={false}
-                                />
-                            </div>
-
-                            <div className="shadow p-5 rounded-md border-gray-200 border">
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Weight ({formData.material_unit})*
-                                </label>
-                                <div className="flex items-center">
-                                    <input
-                                        type="number"
-                                        value={formData.weight}
-                                        onChange={(e) => handleInputChange(e, "weight")}
-                                        placeholder="0"
-                                        className="w-1/2 px-4 py-3 text-xs sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium"
-                                        required
-                                        min="0"
-                                        step="0.1"
-                                    />
-                                    <div className="ml-2 w-1/2">
-                                        <CustomSelect
-                                            id="material_unit"
-                                            label="Unit"
-                                            options={unitOptions}
-                                            value={formData.material_unit}
-                                            setFieldValue={(value) => handleSelectChange("material_unit", value)}
-                                            isLabel={false}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="shadow p-5 rounded-md border-gray-200 border">
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Pickup Date/Time*
-                                </label>
+        <div className="flex flex-col lg:flex-row gap-6 w-full">
+            {/* Left Column */}
+            <div className="flex-1 bg-white rounded-xl ">
+                <form onSubmit={handleSubmit} className=" space-y-4">
+                    <div className="flex flex-col md:flex-row gap-4">
+                        {/* Pickup Location */}
+                        <div className="flex-1 relative shadow p-5 rounded-md border-gray-200 border">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Pickup Location*
+                            </label>
+                            <div className="relative">
                                 <input
-                                    type="datetime-local"
-                                    value={formData.eta_pickup}
-                                    onChange={(e) => handleInputChange(e, "eta_pickup")}
-                                    className="w-full px-4 py-3 text-xs sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium"
+                                    ref={fromInputRef}
+                                    type="text"
+                                    value={formData.from}
+                                    onChange={(e) => handleInputChange(e, "from")}
+                                    onFocus={() => setActiveField("from")}
+                                    placeholder="Enter pickup address"
+                                    className="w-full px-4 py-3 text-xs placeholder:text-xs sm:placeholder:text-sm sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium placeholder:font-medium"
                                     required
                                 />
+                                {formData.from && (
+                                    <button
+                                        type="button"
+                                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                        onClick={() => clearLocation("from")}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                )}
+                                {activeField === "from" && predictions.length > 0 && (
+                                    <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-lg border border-gray-200">
+                                        <ul className="py-1 max-h-60 overflow-auto">
+                                            {predictions.map((prediction) => (
+                                                <li
+                                                    key={prediction.place_id}
+                                                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                                                    onClick={() =>
+                                                        handlePlaceSelect(prediction.place_id, "from")
+                                                    }
+                                                >
+                                                    {prediction.description}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
-                        {/* Map Preview */}
-                        <div className="relative">
-                            <div
-                                ref={mapRef}
-                                className="w-full h-64 rounded-lg border border-gray-200 mt-4"
+                        {/* Delivery Location */}
+                        <div className="flex-1 relative shadow p-5 rounded-md border-gray-200 border">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Delivery Location*
+                            </label>
+                            <div className="relative">
+                                <input
+                                    ref={toInputRef}
+                                    type="text"
+                                    value={formData.to}
+                                    onChange={(e) => handleInputChange(e, "to")}
+                                    onFocus={() => setActiveField("to")}
+                                    placeholder="Enter delivery address"
+                                    className="w-full px-4 py-3 text-xs placeholder:text-xs sm:placeholder:text-sm sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium placeholder:font-medium"
+                                    required
+                                />
+                                {formData.to && (
+                                    <button
+                                        type="button"
+                                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                        onClick={() => clearLocation("to")}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                )}
+                                {activeField === "to" && predictions.length > 0 && (
+                                    <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-lg border border-gray-200">
+                                        <ul className="py-1 max-h-60 overflow-auto">
+                                            {predictions.map((prediction) => (
+                                                <li
+                                                    key={prediction.place_id}
+                                                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                                                    onClick={() =>
+                                                        handlePlaceSelect(prediction.place_id, "to")
+                                                    }
+                                                >
+                                                    {prediction.description}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Shipment Details */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                        <div className="shadow p-5 rounded-md border-gray-200 border">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Material Type*
+                            </label>
+                            <CustomSelect
+                                id="material"
+                                label="Material Type"
+                                options={materialOptions}
+                                value={formData.material}
+                                setFieldValue={(value) => handleSelectChange("material", value)}
+                                isLabel={false}
                             />
-                            {formData.distance > 0 && (
-                                <div className="absolute bottom-4 left-4 bg-white p-2 rounded-md shadow-md z-10">
-                                    <p className="text-sm font-medium">Distance: {formData.distance} km</p>
-                                </div>
-                            )}
                         </div>
 
-                        {/* Route Information */}
+                        <div className="shadow p-5 rounded-md border-gray-200 border">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Weight ({formData.material_unit})*
+                            </label>
+                            <div className="flex items-center">
+                                <input
+                                    type="number"
+                                    value={formData.weight}
+                                    onChange={(e) => handleInputChange(e, "weight")}
+                                    placeholder="0"
+                                    className="w-1/2 px-4 py-3 text-xs sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium"
+                                    required
+                                    min="0"
+                                    step="0.1"
+                                />
+                                <div className="ml-2 w-1/2">
+                                    <CustomSelect
+                                        id="material_unit"
+                                        label="Unit"
+                                        options={unitOptions}
+                                        value={formData.material_unit}
+                                        setFieldValue={(value) => handleSelectChange("material_unit", value)}
+                                        isLabel={false}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="shadow p-5 rounded-md border-gray-200 border">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Pickup Date/Time*
+                            </label>
+                            <input
+                                type="datetime-local"
+                                value={formData.eta_pickup}
+                                onChange={(e) => handleInputChange(e, "eta_pickup")}
+                                className="w-full px-4 py-3 text-xs sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    {/* Map Preview */}
+                    <div className="relative">
+                        <div
+                            ref={mapRef}
+                            className="w-full h-64 rounded-lg border border-gray-200 mt-4"
+                        />
                         {formData.distance > 0 && (
-                            <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 mt-4">
-                                <p className="font-medium text-blue-800">Route Information</p>
-                                <div className="grid grid-cols-2 gap-4 mt-2">
-                                    <div>
-                                        <p className="text-xs text-gray-500">Distance</p>
-                                        <p className="font-medium">{formData.distance} km</p>
+                            <div className="absolute bottom-4 left-4 bg-white p-2 rounded-md shadow-md z-10">
+                                <p className="text-sm font-medium">Distance: {formData.distance} km</p>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Route Information */}
+                    {formData.distance > 0 && (
+                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 mt-4">
+                            <p className="font-medium text-blue-800">Route Information</p>
+                            <div className="grid grid-cols-2 gap-4 mt-2">
+                                <div>
+                                    <p className="text-xs text-gray-500">Distance</p>
+                                    <p className="font-medium">{formData.distance} km</p>
+                                </div>
+                                <div>
+                                    <p className="text-xs text-gray-500">Est. Duration</p>
+                                    <p className="font-medium">
+                                        {Math.ceil(formData.distance / 40)}-{Math.ceil(formData.distance / 30)} hours
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Submit Button */}
+                    <div className="flex justify-end mt-6">
+                        <button
+                            type="submit"
+                            className="px-6 py-3 bg-black hover:bg-black/80 text-white font-medium rounded-md shadow-sm transition-colors duration-200 ease-in-out text-sm"
+                            disabled={loading}
+                        >
+                            {loading ? "Processing..." : "Continue to Confirm"}
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            {/* Right Column */}
+            <div className="w-full lg:w-1/3 bg-gray-50 rounded-xl shadow p-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                    Delivery Summary
+                </h3>
+                <div className="space-y-4">
+                    {!formData.from || !formData.to ? (
+                        <p className="text-gray-500 text-sm">
+                            Enter both locations to see available delivery options.
+                        </p>
+                    ) : (
+                        <>
+                            <div className="space-y-2">
+                                <h4 className="font-medium text-gray-800">Route Summary</h4>
+                                <div className="flex items-start gap-3">
+                                    <div className="flex flex-col items-center pt-1">
+                                        <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                                            <span className="text-white text-xs">P</span>
+                                        </div>
+                                        <div className="w-px h-8 bg-gray-300 my-1"></div>
+                                        <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                                            <span className="text-white text-xs">D</span>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="text-xs text-gray-500">Est. Duration</p>
-                                        <p className="font-medium">
-                                            {Math.ceil(formData.distance / 40)}-{Math.ceil(formData.distance / 30)} hours
+                                    <div className="flex-1">
+                                        <p className="text-sm font-medium text-gray-800 line-clamp-2">
+                                            {formData.from}
+                                        </p>
+                                        <p className="text-xs text-gray-500 mt-6 line-clamp-2">
+                                            {formData.to}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                        )}
 
-                        {/* Submit Button */}
-                        <div className="flex justify-end mt-6">
-                            <button
-                                type="submit"
-                                className="px-6 py-3 bg-black hover:bg-black/80 text-white font-medium rounded-md shadow-sm transition-colors duration-200 ease-in-out text-sm"
-                                disabled={loading}
-                            >
-                                {loading ? "Processing..." : "Continue to Confirm"}
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                {/* Right Column */}
-                <div className="w-full lg:w-1/3 bg-gray-50 rounded-xl shadow p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                        Delivery Summary
-                    </h3>
-                    <div className="space-y-4">
-                        {!formData.from || !formData.to ? (
-                            <p className="text-gray-500 text-sm">
-                                Enter both locations to see available delivery options.
-                            </p>
-                        ) : (
-                            <>
-                                <div className="space-y-2">
-                                    <h4 className="font-medium text-gray-800">Route Summary</h4>
-                                    <div className="flex items-start gap-3">
-                                        <div className="flex flex-col items-center pt-1">
-                                            <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                                                <span className="text-white text-xs">P</span>
-                                            </div>
-                                            <div className="w-px h-8 bg-gray-300 my-1"></div>
-                                            <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
-                                                <span className="text-white text-xs">D</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex-1">
-                                            <p className="text-sm font-medium text-gray-800 line-clamp-2">
-                                                {formData.from}
-                                            </p>
-                                            <p className="text-xs text-gray-500 mt-6 line-clamp-2">
-                                                {formData.to}
-                                            </p>
-                                        </div>
+                            {formData.distance > 0 && (
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div className="p-3 bg-white rounded-lg border border-gray-200">
+                                        <p className="text-xs text-gray-500">Distance</p>
+                                        <p className="font-medium">{formData.distance} km</p>
+                                    </div>
+                                    <div className="p-3 bg-white rounded-lg border border-gray-200">
+                                        <p className="text-xs text-gray-500">Material</p>
+                                        <p className="font-medium">{formData.material || "-"}</p>
+                                    </div>
+                                    <div className="p-3 bg-white rounded-lg border border-gray-200">
+                                        <p className="text-xs text-gray-500">Weight</p>
+                                        <p className="font-medium">
+                                            {formData.weight
+                                                ? `${formData.weight} ${formData.material_unit}`
+                                                : "-"}
+                                        </p>
                                     </div>
                                 </div>
+                            )}
+                        </>
+                    )}
 
-                                {formData.distance > 0 && (
-                                    <div className="grid grid-cols-2 gap-3">
-                                        <div className="p-3 bg-white rounded-lg border border-gray-200">
-                                            <p className="text-xs text-gray-500">Distance</p>
-                                            <p className="font-medium">{formData.distance} km</p>
-                                        </div>
-                                        <div className="p-3 bg-white rounded-lg border border-gray-200">
-                                            <p className="text-xs text-gray-500">Material</p>
-                                            <p className="font-medium">{formData.material || "-"}</p>
-                                        </div>
-                                        <div className="p-3 bg-white rounded-lg border border-gray-200">
-                                            <p className="text-xs text-gray-500">Weight</p>
-                                            <p className="font-medium">
-                                                {formData.weight
-                                                    ? `${formData.weight} ${formData.material_unit}`
-                                                    : "-"}
-                                            </p>
-                                        </div>
-                                    </div>
-                                )}
-                            </>
-                        )}
-
-                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 flex items-start gap-3">
-                            <p className="text-blue-800 text-sm font-medium">
-                                Pro tip: Save your frequent locations for faster booking!
-                            </p>
-                        </div>
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 flex items-start gap-3">
+                        <p className="text-blue-800 text-sm font-medium">
+                            Pro tip: Save your frequent locations for faster booking!
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
     );
 }

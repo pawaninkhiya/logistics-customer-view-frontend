@@ -58,12 +58,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const isAuthenticated = !!user;
 
         if (isAuthenticated && isPublicRoute) {
-            router.push('/dashboard'); 
+            router.push('/'); 
             return;
         }
 
         if (!isAuthenticated && !isPublicRoute) {
-            router.push('/login'); // Not logged in, block access to protected route
+            router.push('/login'); 
             return;
         }
     }, [isLoading, user, pathname, router]);

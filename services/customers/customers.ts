@@ -13,11 +13,9 @@ export const verifyOTP = async (data: { contact_no: number, verification_code: n
     return response.data;
 };
 
-export const updateCustomer = async (formData: FormData): Promise<any> => {
-    const response = await api.put(CUSTOMER_ENDPOINTS.UPDATE, formData, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-    });
+
+// -----------get profile by id----------------
+export const getProfile = async (id: string): Promise<LoginResponse> => {
+    const response = await api.get(CUSTOMER_ENDPOINTS.GET_BY_ID(id));
     return response.data;
 };

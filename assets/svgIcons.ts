@@ -1,5 +1,7 @@
 import Location from './location.svg'
+import logo from "./logo.svg"
 
 export const SvgIcons = {
-  Location: Location,
+    Location: Location,
+    Logo: logo
 };
