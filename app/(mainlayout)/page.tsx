@@ -5,7 +5,8 @@ import { Icons } from "@assets/assets";
 import { Loader } from "@googlemaps/js-api-loader";
 import { useRouter } from "next/navigation";
 import CustomSelect from "@components/ui/CustomSelect";
-import { useGetAllMaterialQuery } from "@/services/materials/materials";
+import { useGetAllMaterialQuery } from "@/services/materials/hooks";
+
 
 interface LocationData {
     from: string;
@@ -23,9 +24,9 @@ interface LocationData {
 
 
 const unitOptions = [
-    { label: "kg", value: "kg" },
-    { label: "g", value: "g" },
-    { label: "lb", value: "lb" },
+    { label: "Kg", value: "Kg" },
+    { label: "Litre", value: "Litre" },
+    { label: "Ton", value: "Ton" },
 ];
 
 export default function HomePage() {
@@ -599,7 +600,7 @@ export default function HomePage() {
                     <div className="flex justify-end mt-6">
                         <button
                             type="submit"
-                            className="px-6 py-3 bg-black hover:bg-black/80 text-white font-medium rounded-md shadow-sm transition-colors duration-200 ease-in-out text-sm"
+                            className="px-6 py-3 bg-black hover:bg-black/80 text-white font-medium rounded-md shadow-sm transition-colors duration-200 ease-in-out text-sm cursor-pointer"
                             disabled={loading}
                         >
                             {loading ? "Processing..." : "Continue to Confirm"}

@@ -1,16 +1,19 @@
 'use client';
 
+import { useTripVehicleTypesQuery } from '@/services/vehicale_types/hook';
 import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { FaTruck, FaInfoCircle } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import VehicleCard, { VehicleType } from '@/components/vehicle/VehicleCard';
+import VehicleSkeleton from '@/components/vehicle/VehicleSkeleton';
+import VehicleError from '@/components/vehicle/VehicleError';
 
 const SelectVehicaleType = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
-
     const [tripData, setTripData] = useState<any | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    console.log(tripData);
+
     useEffect(() => {
         try {
             const dataParam = searchParams.get('data');
@@ -19,21 +22,26 @@ const SelectVehicaleType = () => {
                 const parsedData = JSON.parse(decodedData);
                 setTripData(parsedData);
             }
-            setIsLoading(false);
         } catch (err) {
-            setError('Failed to load trip details');
-            setIsLoading(false);
             console.error('Error parsing trip data:', err);
         }
     }, [searchParams]);
 
-    const handleSelectVehicle = (vehicleType: string) => {
+    const weight = tripData?.weight;
+    const { data, isLoading, error } = useTripVehicleTypesQuery(weight);
+
+    const handleSelectVehicle = (vehicleId: string) => {
         if (!tripData) return;
 
         const updatedData = {
             ...tripData,
-            selectedVehicle: vehicleType,
+            vehicle_type: vehicleId
         };
+
+        if (!updatedData.vehicle_type) {
+            toast.error("Vehicle is Required");
+            return;
+        }
 
         router.push(
             `/trip/booking_confirm?data=${encodeURIComponent(
@@ -42,58 +50,37 @@ const SelectVehicaleType = () => {
         );
     };
 
-    if (isLoading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
-
     return (
-        
-        <div className="flex flex-col gap-4 p-6">
-            <h1 className="text-xl font-bold">Select Vehicle Type</h1>
+        <div className="flex flex-col gap-6 p-4 xl:p-6 w-full 2xl:shadow 2xl:border 2xl:border-gray-100 rounded-tl-3xl sm:rounded-md bg-gray-50">
+            {/* Header */}
+            <div className="flex items-center gap-3 flex-wrap">
+                <FaTruck className="text-lg sm:text-xl text-blue-600" />
+                <h1 className="font-semibold text-gray-800">Select Vehicle</h1>
+                <FaInfoCircle className="text-gray-500 ml-auto" />
+            </div>
 
-            <button
-                onClick={() => handleSelectVehicle('Truck')}
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-            >
-                Truck
-            </button>
+            {/* Loading */}
+            {isLoading && (
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+                    {[...Array(8)].map((_, i) => (
+                        <VehicleSkeleton key={i} />
+                    ))}
+                </div>
+            )}
 
-            <button
-                onClick={() => handleSelectVehicle('Mini Van')}
-                className="bg-green-500 text-white px-4 py-2 rounded"
-            >
-                Mini Van
-            </button>
+            {/* Error */}
+            {error && <VehicleError message="Failed to load vehicle types. Please try again." />}
 
-            <button
-                onClick={() => handleSelectVehicle('Tempo')}
-                className="bg-purple-500 text-white px-4 py-2 rounded"
-            >
-                Tempo
-            </button>
+            {/* List */}
+            {!isLoading && !error && (
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+                    {data?.data?.map((vehicle: VehicleType) => (
+                        <VehicleCard key={vehicle._id} vehicle={vehicle} onSelect={handleSelectVehicle} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
 
 export default SelectVehicaleType;
-
-// import React from 'react'
-
-// const SelectVehicale = () => {
-//     return (
-//         <div className="flex flex-col lg:flex-row gap-6 w-full">
-//             {/* Left Column */}
-//             <div className="flex-1 bg-white rounded-xl ">
-
-//             </div>
-
-//             {/* Right Column */}
-//             <div className="w-full lg:w-1/3 bg-gray-50 rounded-xl shadow p-6">
-//                 <h3 className="text-lg font-semibold text-gray-800 mb-4">
-//                     Invoice Summary
-//                 </h3>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default SelectVehicale

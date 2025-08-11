@@ -3,7 +3,7 @@
 import React, { forwardRef } from "react";
 import Select from "react-select";
 import { ErrorMessage, useFormikContext } from "formik";
-import { customSelectStyles } from "@utils/customSelectStyles";
+import { customSelectStyles } from "@/utils/customSelectStyles";
 
 interface Option {
     label: string;

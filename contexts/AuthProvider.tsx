@@ -58,12 +58,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const isAuthenticated = !!user;
 
         if (isAuthenticated && isPublicRoute) {
-            router.push('/'); 
+            router.push('/');
             return;
         }
 
         if (!isAuthenticated && !isPublicRoute) {
-            router.push('/login'); 
+            router.push('/login');
             return;
         }
     }, [isLoading, user, pathname, router]);
