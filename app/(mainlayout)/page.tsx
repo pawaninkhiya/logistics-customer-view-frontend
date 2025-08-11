@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import { Icons } from "@assets/assets";
 import { Loader } from "@googlemaps/js-api-loader";
 import { useRouter } from "next/navigation";
 import CustomSelect from "@components/ui/CustomSelect";
@@ -50,7 +49,7 @@ export default function HomePage() {
     const [activeField, setActiveField] = useState<"from" | "to" | null>(null);
     const [predictions, setPredictions] = useState<google.maps.places.AutocompletePrediction[]>([]);
     const [directionsRenderer, setDirectionsRenderer] = useState<google.maps.DirectionsRenderer | null>(null);
-    const [mapCenter, setMapCenter] = useState({ lat: 20.5937, lng: 78.9629 });
+    const [mapCenter] = useState({ lat: 20.5937, lng: 78.9629 });
 
     const fromInputRef = useRef<HTMLInputElement>(null);
     const toInputRef = useRef<HTMLInputElement>(null);

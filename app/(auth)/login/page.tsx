@@ -27,7 +27,7 @@ const Login = () => {
                 <LoginForm />
                 <div className="text-center text-xs sm:text-sm">
                     <p className="text-gray-600">
-                        Don't have an account?{" "}
+                        Don&apos;t have an account?{" "}
                         <a href="/registration" className="font-medium text-indigo-600 hover:text-indigo-500">
                             Sign in
                         </a>

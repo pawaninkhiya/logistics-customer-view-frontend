@@ -1,12 +1,12 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
 import { FaCheckCircle, FaHome, FaTruck } from 'react-icons/fa';
 import Link from 'next/link';
 
-const BookingSuccessPage = () => {
-    const searchParams = useSearchParams();
-    const tripId = searchParams.get('id');
+// interface BookingSuccessPageProps {
+//     searchParams: { id?: string }; // Make id optional with ?
+// }
+
+export default function BookingSuccessPage() {
+    // const tripId = searchParams?.id ?? null;
 
     return (
         <div className="h-full flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 w-full min-h-[600px]">
@@ -21,11 +21,11 @@ const BookingSuccessPage = () => {
                     <p className="text-sm text-gray-600">
                         Your trip has been successfully booked.
                     </p>
-                    {tripId && (
+                    {/* {tripId && (
                         <p className="mt-2 text-sm text-gray-500">
                             Trip ID: <span className="font-medium">{tripId}</span>
                         </p>
-                    )}
+                    )} */}
                     <div className="mt-6 flex items-center justify-center gap-4">
                         <Link
                             href="/"
@@ -46,6 +46,4 @@ const BookingSuccessPage = () => {
             </div>
         </div>
     );
-};
-
-export default BookingSuccessPage;
+}

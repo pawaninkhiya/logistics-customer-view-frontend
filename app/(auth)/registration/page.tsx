@@ -4,7 +4,6 @@ import Image from "next/image";
 import AuthButton from "@/components/ui/AuthButton";
 import AuthInput from "@/components/ui/AuthInput";
 import logo from "@assets/logo.svg";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 type UserType = "customer" | "vendor" | "admin";

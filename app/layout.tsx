@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Poppins, Sora } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/contexts/QueryProvider";
 import { AuthProvider } from "@/contexts/AuthProvider";
