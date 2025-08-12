@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthProvider";
 import { useGetAllTripsQuery } from "@/services/bookings/hooks";
 import React from "react";
 import { FiTruck, FiCalendar, FiMapPin, FiClock } from "react-icons/fi";
-import { formatStatus } from "@/utils/statusUtils"; 
+import { formatStatus } from "@/utils/statusUtils";
 
 const Bookings = () => {
     const { user } = useAuth();
@@ -18,7 +18,7 @@ const Bookings = () => {
         );
 
     return (
-        <div className="w-full mx-auto md:p-6">
+        <div className="w-full mx-auto pt-5">
             <header className="mb-8">
                 <h1 className="text-lg md:text-xl font-bold text-gray-800">
                     Your Bookings
@@ -37,8 +37,9 @@ const Bookings = () => {
                         No shipments found
                     </h3>
                     <p className="text-gray-500 mt-1">
-                        You haven't created any shipments yet
+                        You haven&apos;t created any shipments yet
                     </p>
+
                 </div>
             ) : (
                 <div className="space-y-5 grid grid-cols-1 xl:grid-cols-2 gap-4">

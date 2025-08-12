@@ -405,7 +405,7 @@ export default function HomePage() {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row gap-6 w-full">
+        <div className="flex flex-col lg:flex-row gap-6 w-full pt-5">
             {/* Left Column */}
             <div className="flex-1 bg-white rounded-xl ">
                 <form onSubmit={handleSubmit} className=" space-y-4">
@@ -525,18 +525,18 @@ export default function HomePage() {
                             <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Weight ({formData.material_unit})*
                             </label>
-                            <div className="flex items-center">
+                            <div className="flex md:flex-row flex-col items-center md:gap-0 gap-3">
                                 <input
                                     type="number"
                                     value={formData.weight}
                                     onChange={(e) => handleInputChange(e, "weight")}
                                     placeholder="0"
-                                    className="w-1/2 px-4 py-3 text-xs sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium"
+                                    className="w-full md:w-1/2 px-4 py-3 text-xs sm:text-sm border rounded-md focus:outline-none transition-all duration-200 ease-in-out border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400 font-medium"
                                     required
                                     min="0"
                                     step="0.1"
                                 />
-                                <div className="ml-2 w-1/2">
+                                <div className="w-full md:ml-2 md:w-1/2">
                                     <CustomSelect
                                         id="material_unit"
                                         label="Unit"

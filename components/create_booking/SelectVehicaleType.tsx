@@ -51,7 +51,7 @@ const SelectVehicaleType = () => {
     };
 
     return (
-        <div className="flex flex-col gap-6 p-4 xl:p-6 w-full 2xl:shadow 2xl:border 2xl:border-gray-100 rounded-tl-3xl sm:rounded-md bg-gray-50">
+        <div className="flex flex-col mt-4 gap-6 p-4 xl:p-6 w-full 2xl:shadow 2xl:border 2xl:border-gray-100 rounded-tl-3xl sm:rounded-md bg-gray-50">
             {/* Header */}
             <div className="flex items-center gap-3 flex-wrap">
                 <FaTruck className="text-lg sm:text-xl text-blue-600" />

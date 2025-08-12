@@ -91,7 +91,7 @@ export default function BookingConfirmContent() {
   }
 
   return (
-    <div className="w-full mx-auto md:p-6">
+    <div className="w-full mx-auto  pt-5">
       <h1 className="text-lg sm:text-xl font-semibold mb-6 text-gray-800">
         Confirm Your Booking
       </h1>

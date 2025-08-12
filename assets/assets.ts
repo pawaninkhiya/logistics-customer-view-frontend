@@ -1,5 +1,5 @@
 // @assets/icons.ts
-import { FaGoogle, FaExpand, FaCompress } from "react-icons/fa";
+import { FaGoogle, FaExpand, FaCompress, FaSearch, FaUser, FaBell, FaCog } from "react-icons/fa";
 import { 
   LuLoader, 
   LuMapPin, 
@@ -9,7 +9,21 @@ import {
   LuArrowRightLeft,
   LuClock,
   LuDollarSign,
-  LuMap
+  LuMap,
+  LuMenu,
+  LuX,
+  LuChevronDown,
+  LuChevronUp,
+  LuSettings,
+  LuUser,
+  LuBell,
+  LuShoppingCart,
+  LuHeart,
+  LuStar,
+  LuFilter,
+  LuPlus,
+  LuMinus,
+  LuCheck
 } from "react-icons/lu";
 import { 
   HiLockClosed, 
@@ -17,7 +31,9 @@ import {
   HiHome, 
   HiOutlineLocationMarker,
   HiOutlineCalendar,
-  HiOutlineCube
+  HiOutlineCube,
+  HiOutlineUser,
+  HiOutlineShoppingBag
 } from "react-icons/hi";
 import { 
   FiTruck,
@@ -25,25 +41,41 @@ import {
   FiMapPin,
   FiCalendar,
   FiClock,
-  FiDollarSign
+  FiDollarSign,
+  FiSearch,
+  FiUser,
+  FiSettings
 } from "react-icons/fi";
 import { 
   IoCalendarOutline,
   IoTimeOutline,
-  IoPricetagOutline
+  IoPricetagOutline,
+  IoSearchOutline,
+  IoPersonOutline,
+  IoNotificationsOutline,
+  IoSettingsOutline
 } from "react-icons/io5";
 import { 
   MdOutlineDirections,
   MdOutlineMyLocation,
   MdOutlinePlace,
-  MdOutlineLocalShipping
+  MdOutlineLocalShipping,
+  MdOutlineDashboard,
+  MdOutlineHistory,
+  MdOutlineHelp,
+  MdOutlineEmail,
+  MdOutlinePhone,
+  MdOutlineChat
 } from "react-icons/md";
-import { RiLogoutBoxRLine } from "react-icons/ri";
+import { RiLogoutBoxRLine, RiCustomerService2Line } from "react-icons/ri";
+import { BiSolidOffer, BiHistory } from "react-icons/bi";
+import { BsCart, BsHeart, BsStar, BsFilter } from "react-icons/bs";
+
 export const Icons = {
   // Authentication
   Google: FaGoogle,
   Lock: HiLockClosed,
-  Logout:RiLogoutBoxRLine,
+  Logout: RiLogoutBoxRLine,
   
   // Loading
   Loader: LuLoader,
@@ -72,10 +104,12 @@ export const Icons = {
   Clock: FiClock,
   Time: LuCalendarClock,
   TimeOutline: IoTimeOutline,
+  History: BiHistory,
   
   // Payment
   Dollar: FiDollarSign,
   PriceTag: IoPricetagOutline,
+  Offer: BiSolidOffer,
   
   // Map
   Map: LuMap,
@@ -85,8 +119,47 @@ export const Icons = {
   Expand: FaExpand,
   Compress: FaCompress,
   ArrowRightLeft: LuArrowRightLeft,
+  Menu: LuMenu,
+  Close: LuX,
+  ChevronDown: LuChevronDown,
+  ChevronUp: LuChevronUp,
+  Plus: LuPlus,
+  Minus: LuMinus,
+  Check: LuCheck,
+  Filter: LuFilter,
+  
+  // Navigation
+  Dashboard: MdOutlineDashboard,
+  Account: HiOutlineUser,
+  Cart: LuShoppingCart,
+  Wishlist: LuHeart,
+  Notifications: LuBell,
+  Settings: LuSettings,
+  
+  // User Interface
+  Search: FaSearch,
+  User: FaUser,
+  Bell: FaBell,
+  Cog: FaCog,
+  ShoppingBag: HiOutlineShoppingBag,
+  Star: LuStar,
+  
+  // Support
+  Help: MdOutlineHelp,
+  Email: MdOutlineEmail,
+  Phone: MdOutlinePhone,
+  Chat: MdOutlineChat,
+  CustomerService: RiCustomerService2Line,
   
   // Alias for consistency
   CalendarClock: LuCalendarClock,
   MapPin: FiMapPin,
+  UserOutline: IoPersonOutline,
+  SearchOutline: IoSearchOutline,
+  SettingsOutline: IoSettingsOutline,
+  NotificationsOutline: IoNotificationsOutline,
+  CartAlt: BsCart,
+  HeartAlt: BsHeart,
+  StarAlt: BsStar,
+  FilterAlt: BsFilter
 };
