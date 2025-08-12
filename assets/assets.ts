@@ -65,7 +65,7 @@ import {
 import { RiLogoutBoxRLine, RiCustomerService2Line } from "react-icons/ri";
 import { BiSolidOffer, BiHistory } from "react-icons/bi";
 import { BsCart, BsHeart, BsStar, BsFilter } from "react-icons/bs";
-
+import { FaHeadphones } from "react-icons/fa6";
 export const Icons = {
   // Authentication
   Google: FaGoogle,
