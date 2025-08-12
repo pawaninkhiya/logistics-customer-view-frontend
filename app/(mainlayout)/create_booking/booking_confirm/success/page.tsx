@@ -1,13 +1,8 @@
 import { FaCheckCircle, FaHome, FaTruck } from 'react-icons/fa';
 import Link from 'next/link';
 
-// interface BookingSuccessPageProps {
-//     searchParams: { id?: string }; // Make id optional with ?
-// }
 
 export default function BookingSuccessPage() {
-    // const tripId = searchParams?.id ?? null;
-
     return (
         <div className="h-full flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 w-full min-h-[600px]">
             <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md text-center">
@@ -21,11 +16,6 @@ export default function BookingSuccessPage() {
                     <p className="text-sm text-gray-600">
                         Your trip has been successfully booked.
                     </p>
-                    {/* {tripId && (
-                        <p className="mt-2 text-sm text-gray-500">
-                            Trip ID: <span className="font-medium">{tripId}</span>
-                        </p>
-                    )} */}
                     <div className="mt-6 flex items-center justify-center gap-4">
                         <Link
                             href="/"

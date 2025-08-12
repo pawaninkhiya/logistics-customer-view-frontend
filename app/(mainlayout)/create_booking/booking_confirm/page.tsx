@@ -1,6 +1,6 @@
 'use client';
 
-import BookingConfirmContent from '@/components/trips/BookingConfirmContent';
+import BookingConfirmContent from '@/components/create_booking/BookingConfirmContent';
 import { Suspense } from 'react';
 
 export default function BookingConfirmPage() {

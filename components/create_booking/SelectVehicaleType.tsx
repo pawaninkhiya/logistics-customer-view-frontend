@@ -44,7 +44,7 @@ const SelectVehicaleType = () => {
         }
 
         router.push(
-            `/trip/booking_confirm?data=${encodeURIComponent(
+            `/create_booking/booking_confirm?data=${encodeURIComponent(
                 JSON.stringify(updatedData)
             )}`
         );

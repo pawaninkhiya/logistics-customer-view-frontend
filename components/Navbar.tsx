@@ -9,7 +9,7 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <div className="w-full bg-white  pb-10">
+        <div className="w-full bg-white  pb-6">
             <div className="container mx-auto">
                 <div className="flex justify-between items-center">
                     {/* Left: Delivery Details */}
@@ -30,7 +30,7 @@ const Navbar = () => {
                         <Link href="/" className="hover:text-orange-600 transition-colors">
                             Home
                         </Link>
-                        <Link href="/booking" className="hover:text-orange-600 transition-colors">
+                        <Link href="/bookings" className="hover:text-orange-600 transition-colors">
                             Booking
                         </Link>
                         <Link href="/account" className="hover:text-orange-600 transition-colors">

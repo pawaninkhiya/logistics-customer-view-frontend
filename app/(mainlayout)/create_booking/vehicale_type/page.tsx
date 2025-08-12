@@ -1,6 +1,6 @@
 'use client';
 
-import SelectVehicaleType from '@/components/trips/SelectVehicaleType';
+import SelectVehicaleType from '@/components/create_booking/SelectVehicaleType';
 import React, { Suspense } from 'react';
 
 

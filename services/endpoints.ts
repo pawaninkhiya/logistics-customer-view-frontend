@@ -27,5 +27,5 @@ export const VEHICLE_TYPE_ENDPOINTS = {
 export const TRIP_ENDPOINTS = {
     // RETRY_TRIP_BY_ID: (id: string) => `/apps/trip/retry/${id}`,
     CREATE: "/apps/trip/",
-    GET_ALL: "/trips",
+    GET_ALL: "/apps/trip/",
 };

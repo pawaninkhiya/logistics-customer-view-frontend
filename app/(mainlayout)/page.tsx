@@ -398,7 +398,7 @@ export default function HomePage() {
 
         // Navigate to next page with form data
         router.push(
-            `/trip/vehicale_type?data=${encodeURIComponent(
+            `/create_booking/vehicale_type?data=${encodeURIComponent(
                 JSON.stringify(formData)
             )}`
         );

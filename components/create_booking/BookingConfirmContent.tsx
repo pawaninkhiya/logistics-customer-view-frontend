@@ -7,11 +7,12 @@ import { GiWeight } from 'react-icons/gi';
 import { MdPayment } from 'react-icons/md';
 import { ImSpinner8 } from 'react-icons/im';
 import toast from 'react-hot-toast';
-import BookingMap from '@/components/trips/BookingMap';
+
 import { useVehicleTypeByIdQuery } from '@/services/vehicale_types/hook';
 import { useAuth } from '@/contexts/AuthProvider';
-import { useCreateTripMutation } from '@/services/trips/hooks';
+import { useCreateTripMutation } from '@/services/bookings/hooks';
 import { TripPayload } from '@/types/tripTypes';
+import BookingMap from './BookingMap';
 
 interface VehicleType {
   _id: string;
@@ -72,7 +73,7 @@ export default function BookingConfirmContent() {
       };
       const res = await mutateAsync(payload);
       toast.success('Booking confirmed successfully!');
-      router.push(`/trip/booking_confirm/success?id=${res.data._id}`);
+      router.push(`/create_booking/booking_confirm/success?id=${res.data._id}`);
     } catch (error: any) {
       console.error('Error creating trip:', error);
       toast.error(error?.response?.data?.message || 'Failed to create booking');
