@@ -11,7 +11,7 @@ const ProfilePage = () => {
 
     const menuItems = [
         { title: 'History', description: 'View your activity history', href: '/history' },
-        { title: 'Customer Support', description: 'Get help with your account', href: '/support' },
+        { title: 'Customer Support', description: 'Get help with your account', href: '/customer&support' },
         { title: 'Terms & Conditions', description: 'Read our terms of service', href: '/terms' },
         { title: 'Delete My Account', description: 'Permanently remove your account', href: '/delete-account', isDestructive: true },
     ];
@@ -69,7 +69,10 @@ const ProfilePage = () => {
                                         {item.description}
                                     </p>
                                 </div>
-                                <Icons.ArrowRightLeft     className={`h-5 w-5 ${item.isDestructive ? 'text-red-400' : 'text-gray-400'}`}/>
+                                {
+                                    !item.isDestructive&&
+                                    < Icons.ArrowRight    className={`h-5 w-5 ${item.isDestructive ? 'text-red-400' : 'text-gray-400'}`}/>
+                                }
                             </div>
                         </Link>
                     ))}

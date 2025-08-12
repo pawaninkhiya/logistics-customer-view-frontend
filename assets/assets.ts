@@ -7,8 +7,7 @@ import {
   LuCalendarClock,
   LuWeight,
   LuArrowRightLeft,
-  LuClock,
-  LuDollarSign,
+  LuArrowLeft,
   LuMap,
   LuMenu,
   LuX,
@@ -23,14 +22,14 @@ import {
   LuFilter,
   LuPlus,
   LuMinus,
-  LuCheck
+  LuCheck,
+  LuArrowRight
 } from "react-icons/lu";
 import { 
   HiLockClosed, 
   HiLocationMarker, 
   HiHome, 
   HiOutlineLocationMarker,
-  HiOutlineCalendar,
   HiOutlineCube,
   HiOutlineUser,
   HiOutlineShoppingBag
@@ -42,9 +41,6 @@ import {
   FiCalendar,
   FiClock,
   FiDollarSign,
-  FiSearch,
-  FiUser,
-  FiSettings
 } from "react-icons/fi";
 import { 
   IoCalendarOutline,
@@ -61,7 +57,6 @@ import {
   MdOutlinePlace,
   MdOutlineLocalShipping,
   MdOutlineDashboard,
-  MdOutlineHistory,
   MdOutlineHelp,
   MdOutlineEmail,
   MdOutlinePhone,
@@ -119,6 +114,8 @@ export const Icons = {
   Expand: FaExpand,
   Compress: FaCompress,
   ArrowRightLeft: LuArrowRightLeft,
+  ArrowLeft: LuArrowLeft,
+  ArrowRight: LuArrowRight,
   Menu: LuMenu,
   Close: LuX,
   ChevronDown: LuChevronDown,

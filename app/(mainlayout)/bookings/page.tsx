@@ -49,7 +49,7 @@ const Bookings = () => {
                         return (
                             <div
                                 key={trip._id}
-                                className="border border-gray-200 rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                                className="border border-gray-200 h-full rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                             >
                                 <div className="p-5">
                                     <div className="flex justify-between items-start">
