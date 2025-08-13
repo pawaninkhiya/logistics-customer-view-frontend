@@ -14,7 +14,7 @@ const Navbar = () => {
     const isActive = (path: string) => pathname === path
 
     return (
-        <div className="w-full bg-white shadow-sm sticky md:static top-0 z-50 rounded-md">
+        <div className="w-full bg-white shadow border  border-gray-100  sticky md:static top-0 z-50 rounded-md">
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center py-4">
                     {/* Left: Delivery Details */}
@@ -33,34 +33,34 @@ const Navbar = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex gap-6 items-center text-sm xl:text-base font-medium text-gray-700">
-                        <Link 
-                            href="/" 
+                        <Link
+                            href="/"
                             className={`hover:text-orange-600 transition-colors ${isActive('/') ? 'text-orange-600 font-semibold' : ''}`}
                         >
                             Home
                         </Link>
-                        <Link 
-                            href="/bookings" 
+                        <Link
+                            href="/bookings"
                             className={`hover:text-orange-600 transition-colors ${isActive('/bookings') ? 'text-orange-600 font-semibold' : ''}`}
                         >
                             Booking
                         </Link>
-                        <Link 
-                            href="/account" 
+                        <Link
+                            href="/account"
                             className={`hover:text-orange-600 transition-colors ${isActive('/account') ? 'text-orange-600 font-semibold' : ''}`}
                         >
                             Account
                         </Link>
-                        <Link 
-                            href="/payment" 
+                        <Link
+                            href="/payment"
                             className={`hover:text-orange-600 transition-colors ${isActive('/payment') ? 'text-orange-600 font-semibold' : ''}`}
                         >
                             Payment
                         </Link>
                         <div className="flex gap-2 items-center">
                             <div className='h-8 border-l-2 border-gray-300'></div>
-                            <button 
-                                onClick={() => logout()} 
+                            <button
+                                onClick={() => logout()}
                                 className="transition-colors cursor-pointer bg-black rounded p-2 text-white hover:bg-gray-800"
                                 aria-label="Logout"
                             >
@@ -85,7 +85,7 @@ const Navbar = () => {
             </div>
             <AnimatePresence>
                 {mobileMenuOpen && (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
@@ -101,7 +101,7 @@ const Navbar = () => {
                                     <p className="text-xs text-gray-500">123 Main St, City, Country</p>
                                 </div>
                             </div> */}
-                            
+
                             <Link
                                 href="/"
                                 className={`block px-3 py-3 rounded-lg text-base font-medium transition-colors ${isActive('/') ? 'text-orange-600 bg-orange-50 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-orange-600'}`}

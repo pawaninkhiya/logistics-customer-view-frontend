@@ -5,6 +5,7 @@ import "./globals.css";
 import { QueryProvider } from "@/contexts/QueryProvider";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import GlobalLoading from "@/components/GlobalLoading";
+import { Toaster } from "react-hot-toast";
 
 const sora = Sora({
     subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <QueryProvider>
                     <AuthProvider>
                         <GlobalLoadingWrapper>
+                            <Toaster/>
                             {children}
                         </GlobalLoadingWrapper>
                     </AuthProvider>

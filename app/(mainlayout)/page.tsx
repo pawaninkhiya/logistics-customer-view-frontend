@@ -5,6 +5,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 import { useRouter } from "next/navigation";
 import CustomSelect from "@components/ui/CustomSelect";
 import { useGetAllMaterialQuery } from "@/services/materials/hooks";
+import Button from "@/components/ui/Button";
 
 
 interface LocationData {
@@ -282,7 +283,7 @@ export default function HomePage() {
             title: field === "from" ? "Pickup Location" : "Delivery Location",
             icon: {
                 url: field === "from"
-                    ? "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                    ? "https://maps.google.com/mapfiles/ms/icons/orange-dot.png"
                     : "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
                 scaledSize: new google.maps.Size(40, 40),
             },
@@ -578,8 +579,8 @@ export default function HomePage() {
 
                     {/* Route Information */}
                     {formData.distance > 0 && (
-                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 mt-4">
-                            <p className="font-medium text-blue-800">Route Information</p>
+                        <div className="p-4 bg-orange-50 rounded-lg border border-orange-100 mt-4">
+                            <p className="font-medium text-orange-800">Route Information</p>
                             <div className="grid grid-cols-2 gap-4 mt-2">
                                 <div>
                                     <p className="text-xs text-gray-500">Distance</p>
@@ -597,13 +598,12 @@ export default function HomePage() {
 
                     {/* Submit Button */}
                     <div className="flex justify-end mt-6">
-                        <button
+                        <Button
                             type="submit"
-                            className="px-6 py-3 bg-black hover:bg-black/80 text-white font-medium rounded-md shadow-sm transition-colors duration-200 ease-in-out text-sm cursor-pointer"
                             disabled={loading}
                         >
                             {loading ? "Processing..." : "Continue to Confirm"}
-                        </button>
+                        </Button>
                     </div>
                 </form>
             </div>
@@ -624,7 +624,7 @@ export default function HomePage() {
                                 <h4 className="font-medium text-gray-800">Route Summary</h4>
                                 <div className="flex items-start gap-3">
                                     <div className="flex flex-col items-center pt-1">
-                                        <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                                        <div className="w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center">
                                             <span className="text-white text-xs">P</span>
                                         </div>
                                         <div className="w-px h-8 bg-gray-300 my-1"></div>
@@ -666,8 +666,8 @@ export default function HomePage() {
                         </>
                     )}
 
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 flex items-start gap-3">
-                        <p className="text-blue-800 text-sm font-medium">
+                    <div className="p-4 bg-orange-50 rounded-lg border border-orange-100 flex items-start gap-3">
+                        <p className="text-orange-800 text-sm font-medium">
                             Pro tip: Save your frequent locations for faster booking!
                         </p>
                     </div>

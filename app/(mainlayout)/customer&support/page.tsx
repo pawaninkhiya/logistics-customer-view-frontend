@@ -14,8 +14,9 @@ const CustomerSupportPage = () => {
     const issueTypes = [
         { value: "", label: "Select an issue type", disabled: true },
         { value: "shipment-tracking", label: "Shipment Tracking" },
-        { value: "pickup-delivery", label: "Pickup/Delivery" },
-        { value: "billing-invoices", label: "Billing & Invoices" },
+        { value: "vehicle-assignment", label: "Vehicle Assignment" },
+        { value: "material-damage", label: "Material Damage" },
+        { value: "billing-pricing", label: "Billing & Pricing" },
         { value: "account-access", label: "Account Access" },
         { value: "other", label: "Other" },
     ];
@@ -25,25 +26,24 @@ const CustomerSupportPage = () => {
         setFormData(prev => ({ ...prev, [id]: value }));
     };
 
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Form submitted:", formData);
     };
 
     return (
-        <div className="max-w-5xl w-full mx-auto  sm:px-6 py-8">
+        <div className="max-w-6xl w-full mx-auto sm:px-6 py-8">
             {/* Heading */}
             <div className="mb-12 text-center">
                 <div className="mx-auto flex items-center justify-center w-16 h-16 bg-orange-50 rounded-full mb-4">
                     <Icons.Headphones className="h-8 w-8 text-orange-500" />
                 </div>
                 <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-                    Transport Support Center
+                    Construction Logistics Support
                 </h1>
                 <p className="text-gray-600 text-sm 2xl:text-base mx-auto leading-relaxed">
-                    Get dedicated assistance for your logistics operations. Our team specializes in
-                    shipment tracking, fleet management, and B2B transport solutions.
+                    Get dedicated assistance for your construction material transport needs. Our team specializes in
+                    local deliveries, vehicle assignment, and B2B transport solutions within 100km radius.
                 </p>
             </div>
 
@@ -55,10 +55,10 @@ const CustomerSupportPage = () => {
                     </div>
                     <div className="flex-1">
                         <h2 className="xl:text-lg text-base md:font-semibold text-gray-900 mb-1">
-                            Priority Transport Support
+                            Urgent Delivery Support
                         </h2>
                         <p className="text-gray-600 text-sm">
-                            For urgent shipment issues, vehicle breakdowns, or last-minute changes.
+                            For urgent construction material deliveries, vehicle breakdowns, or last-minute changes.
                         </p>
                     </div>
                     <Button
@@ -85,19 +85,19 @@ const CustomerSupportPage = () => {
                     <ul className="space-y-3 text-sm text-gray-600">
                         <li className="flex items-start gap-2">
                             <Icons.Truck className="h-4 w-4 mt-0.5 text-gray-400 flex-shrink-0" />
-                            <span>Real-time shipment tracking updates</span>
+                            <span>Real-time material delivery tracking</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Icons.Calendar className="h-4 w-4 mt-0.5 text-gray-400 flex-shrink-0" />
-                            <span>Pickup/delivery rescheduling</span>
+                            <Icons.Box className="h-4 w-4 mt-0.5 text-gray-400 flex-shrink-0" />
+                            <span>Material loading/unloading assistance</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Icons.Briefcase className="h-4 w-4 mt-0.5 text-gray-400 flex-shrink-0" />
-                            <span>Corporate account management</span>
+                            <Icons.Scale className="h-4 w-4 mt-0.5 text-gray-400 flex-shrink-0" />
+                            <span>Weight calculations and pricing</span>
                         </li>
                         <li className="flex items-start gap-2">
                             <Icons.FileText className="h-4 w-4 mt-0.5 text-gray-400 flex-shrink-0" />
-                            <span>Invoice and payment queries</span>
+                            <span>Freight charges and GST queries</span>
                         </li>
                     </ul>
                 </div>
@@ -113,8 +113,8 @@ const CustomerSupportPage = () => {
                     <div className="space-y-4 text-sm text-gray-600">
                         <div>
                             <div className="flex justify-between mb-1">
-                                <span className="font-medium">Standard Issues</span>
-                                <span className="font-semibold text-orange-600">2-4 hours</span>
+                                <span className="font-medium">Standard Delivery Issues</span>
+                                <span className="font-semibold text-orange-600">1-2 hours</span>
                             </div>
                             <div className="w-full bg-gray-100 rounded-full h-2">
                                 <div className="bg-orange-400 h-2 rounded-full w-3/4"></div>
@@ -122,8 +122,8 @@ const CustomerSupportPage = () => {
                         </div>
                         <div>
                             <div className="flex justify-between mb-1">
-                                <span className="font-medium">Urgent Transport Cases</span>
-                                <span className="font-semibold text-orange-600">Under 1 hour</span>
+                                <span className="font-medium">Urgent Construction Site Needs</span>
+                                <span className="font-semibold text-orange-600">Under 30 mins</span>
                             </div>
                             <div className="w-full bg-gray-100 rounded-full h-2">
                                 <div className="bg-orange-600 h-2 rounded-full w-1/3"></div>
@@ -138,7 +138,7 @@ const CustomerSupportPage = () => {
                 <div className="mb-6">
                     <h2 className="text-lg font-semibold text-gray-900 mb-2">Submit a Request</h2>
                     <p className="text-gray-600 text-sm">
-                        Include your shipment ID for faster resolution. Our logistics team typically responds within 2 hours.
+                        Include your order ID or vehicle number for faster resolution. Our logistics team typically responds within 1 hour.
                     </p>
                 </div>
 
@@ -153,12 +153,11 @@ const CustomerSupportPage = () => {
                                 setFormData(prev => ({ ...prev, issue: value }));
                             }}
                         />
-
                     </div>
 
                     <div>
                         <label htmlFor="reference" className="block text-sm font-medium text-gray-700 mb-2">
-                            Shipment/Booking ID (if applicable)
+                            Order/Vehicle Number (if applicable)
                         </label>
                         <input
                             type="text"
@@ -168,7 +167,7 @@ const CustomerSupportPage = () => {
                             className="w-full px-4 py-3 text-xs placeholder:text-xs sm:placeholder:text-sm sm:text-sm border rounded-md
                                 focus:outline-none transition-all duration-200 ease-in-out
                                 font-medium placeholder:font-medium border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400"
-                            placeholder="e.g., SHIP-12345"
+                            placeholder="e.g., ORDER-12345 or DL01AB1234"
                         />
                     </div>
 
@@ -184,7 +183,7 @@ const CustomerSupportPage = () => {
                             className="w-full px-4 py-3 text-xs placeholder:text-xs sm:placeholder:text-sm sm:text-sm border rounded-md
                                 focus:outline-none transition-all duration-200 ease-in-out
                                 font-medium placeholder:font-medium border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400"
-                            placeholder="Describe your issue in detail..."
+                            placeholder="Describe your construction material transport issue..."
                             required
                         ></textarea>
                     </div>
@@ -208,10 +207,10 @@ const CustomerSupportPage = () => {
                         </div>
                         <div>
                             <h3 className="font-medium text-gray-900 mb-1 text-sm">Email Support</h3>
-                            <a href="mailto:support@logistics.com" className="text-gray-600 text-sm hover:text-orange-500 transition-colors">
-                                support@logistics.com
+                            <a href="mailto:support@constructionlogistics.com" className="text-gray-600 text-sm hover:text-orange-500 transition-colors">
+                                support@constructionlogistics.com
                             </a>
-                            <p className="text-gray-500 text-xs mt-1">Response time: 2-4 hours</p>
+                            <p className="text-gray-500 text-xs mt-1">Response time: 1-2 hours</p>
                         </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -219,11 +218,11 @@ const CustomerSupportPage = () => {
                             <Icons.Phone className="h-5 w-5 text-gray-600" />
                         </div>
                         <div>
-                            <h3 className="font-medium text-gray-900 mb-1 text-sm">Phone Support</h3>
+                            <h3 className="font-medium text-gray-900 mb-1 text-sm">Dispatch Hotline</h3>
                             <a href="tel:+919876543210" className="text-gray-600 text-sm hover:text-orange-500 transition-colors">
                                 +91 98765 43210
                             </a>
-                            <p className="text-gray-500 text-xs mt-1">Mon-Sat, 8AM-8PM</p>
+                            <p className="text-gray-500 text-xs mt-1">6AM-10PM, 7 days a week</p>
                         </div>
                     </div>
                 </div>
@@ -234,9 +233,9 @@ const CustomerSupportPage = () => {
                             <Icons.MapPin className="h-5 w-5 text-gray-600" />
                         </div>
                         <div>
-                            <h3 className="font-medium text-gray-900 mb-1 text-sm">Operations Center</h3>
-                            <p className="text-gray-600 text-sm">Chawla Logistics HQ, Delhi, India</p>
-                            <p className="text-gray-500 text-xs mt-1">Visit by appointment only</p>
+                            <h3 className="font-medium text-gray-900 mb-1 text-sm">Dispatch Center</h3>
+                            <p className="text-gray-600 text-sm">Construction Logistics Hub, Delhi NCR</p>
+                            <p className="text-gray-500 text-xs mt-1">For material pickup coordination</p>
                         </div>
                     </div>
                 </div>
