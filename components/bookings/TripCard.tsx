@@ -1,21 +1,19 @@
-// components/TripCard.tsx
-"use client";
-
-import { Trip } from "@/types/tripTypes";
 import { formatStatus } from "@/utils/statusUtils";
-import { BookingDetails } from "./BookingDetails";
-import { TripFooter } from "./BookingFooter";
-
+import { TripDetails } from "./TripDetails";
+import { TripFooter } from "./TripFooter";
 
 interface TripCardProps {
-    trip: Trip;
+    trip: any; // Replace 'any' with your actual trip type
 }
 
 export const TripCard = ({ trip }: TripCardProps) => {
     const { bg, text, label } = formatStatus(trip.status);
+    const hasAcceptedDriver = trip.driver_responses.filter(
+        (r: any) => r.response === "accepted"
+    ).length > 0;
 
     return (
-        <div className="border border-gray-200 rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+        <div className="border border-gray-200 h-full rounded-md overflow-hidden shadow transition-shadow">
             <div className="p-5">
                 <div className="flex justify-between items-start">
                     <div>
@@ -24,20 +22,18 @@ export const TripCard = ({ trip }: TripCardProps) => {
                                 {label}
                             </span>
                         </div>
-                        <h2 className="text-sm md:text-lg font-semibold text-gray-800">
-                            {trip.material.name} Shipment
-                        </h2>
                     </div>
                     <div className="text-right">
-                        <p className="text-xl font-bold text-gray-900">₹{trip.trip_cost_customer}</p>
-                        <p className="text-sm text-gray-500">Total cost</p>
+                        <p className="text-lg font-bold text-gray-900">
+                            ₹{trip.trip_cost_customer}
+                        </p>
                     </div>
                 </div>
 
-                <BookingDetails trip={trip} />
+                <TripDetails trip={trip} />
             </div>
 
-            <TripFooter trip={trip} />
+            <TripFooter hasAcceptedDriver={hasAcceptedDriver} />
         </div>
     );
 };

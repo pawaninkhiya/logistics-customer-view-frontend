@@ -6,3 +6,10 @@ export const getAllMaterial = async (): Promise<any> => {
     const response = await api.get(MATERIAL_TYPES.GET_ALL);
     return response.data;
 };
+
+
+// ------------------ GET: Material Box by ID ------------------
+export const getMaterialById = async (id: string): Promise<any> => {
+    const response = await api.get(MATERIAL_TYPES.GET_BY_ID(id));
+    return response.data;
+};

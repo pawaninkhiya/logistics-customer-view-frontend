@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import VehicleCard, { VehicleType } from '@/components/vehicle/VehicleCard';
 import VehicleSkeleton from '@/components/vehicle/VehicleSkeleton';
 import VehicleError from '@/components/vehicle/VehicleError';
-
+import  gifLoader from "@assets/truck_loader.gif"
 const SelectVehicaleType = () => {
     const searchParams = useSearchParams();
     const router = useRouter();

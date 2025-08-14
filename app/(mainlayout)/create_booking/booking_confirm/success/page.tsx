@@ -29,10 +29,10 @@ export default function BookingSuccessPage() {
                         </Button>
                         <Button
                             variant="secondary"
-                            onClick={() => router.push('/trips')}
+                            onClick={() => router.push('/bookings')}
                         >
                             <FaHome className="mr-2" />
-                            View Trips
+                            View Bookings
                         </Button>
                     </div>
                 </div>

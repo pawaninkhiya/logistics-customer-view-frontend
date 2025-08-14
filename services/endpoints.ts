@@ -12,7 +12,7 @@ export const CUSTOMER_ENDPOINTS = {
 // ------------------ MaterialTypes Endpoints ------------------
 export const MATERIAL_TYPES = {
     GET_ALL: "/material_box",
-    GET_BY_ID: (id: string) => `/admins/${id}`,
+    GET_BY_ID: (id: string) => `/material_box/${id}`,
 };
 
 
