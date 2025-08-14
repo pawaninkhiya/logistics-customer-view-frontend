@@ -52,11 +52,17 @@ const Navbar = () => {
                             Account
                         </Link>
                         <Link
+                            href="/about_us"
+                            className={`hover:text-orange-600 transition-colors ${isActive('/payment') ? 'text-orange-600 font-semibold' : ''}`}
+                        >
+                            About Us
+                        </Link>
+                        {/* <Link
                             href="/payment"
                             className={`hover:text-orange-600 transition-colors ${isActive('/payment') ? 'text-orange-600 font-semibold' : ''}`}
                         >
                             Payment
-                        </Link>
+                        </Link> */}
                         <div className="flex gap-2 items-center">
                             <div className='h-8 border-l-2 border-gray-300'></div>
                             <button
@@ -124,12 +130,19 @@ const Navbar = () => {
                                 Account
                             </Link>
                             <Link
+                                href="/about_us"
+                                className={`block px-3 py-3 rounded-lg text-base font-medium transition-colors ${isActive('/payment') ? 'text-orange-600 bg-orange-50 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-orange-600'}`}
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                About Us
+                            </Link>
+                            {/* <Link
                                 href="/payment"
                                 className={`block px-3 py-3 rounded-lg text-base font-medium transition-colors ${isActive('/payment') ? 'text-orange-600 bg-orange-50 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-orange-600'}`}
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Payment
-                            </Link>
+                            </Link> */}
                             <button
                                 className="block w-full text-left px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-orange-600 transition-colors"
                                 onClick={() => {

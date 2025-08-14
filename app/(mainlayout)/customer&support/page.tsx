@@ -43,7 +43,7 @@ const CustomerSupportPage = () => {
                 </h1>
                 <p className="text-gray-600 text-sm 2xl:text-base mx-auto leading-relaxed">
                     Get dedicated assistance for your construction material transport needs. Our team specializes in
-                    local deliveries, vehicle assignment, and B2B transport solutions within 100km radius.
+                    local deliveries, vehicle assignment, and B2B transport solutions .
                 </p>
             </div>
 
@@ -64,7 +64,9 @@ const CustomerSupportPage = () => {
                     <Button
                         className="w-full sm:w-auto"
                         variant="primary"
-                        onClick={() => console.log("Live chat initiated")}
+                        onClick={() => {
+                            window.open("https://wa.me/+917819000308", "_blank");
+                        }}
                     >
                         <Icons.MessageSquare className="mr-2 h-4 w-4" />
                         Start Live Chat
@@ -208,7 +210,7 @@ const CustomerSupportPage = () => {
                         <div>
                             <h3 className="font-medium text-gray-900 mb-1 text-sm">Email Support</h3>
                             <a href="mailto:support@constructionlogistics.com" className="text-gray-600 text-sm hover:text-orange-500 transition-colors">
-                                support@constructionlogistics.com
+                                sales@chawlacabinets.com
                             </a>
                             <p className="text-gray-500 text-xs mt-1">Response time: 1-2 hours</p>
                         </div>
@@ -220,7 +222,7 @@ const CustomerSupportPage = () => {
                         <div>
                             <h3 className="font-medium text-gray-900 mb-1 text-sm">Dispatch Hotline</h3>
                             <a href="tel:+919876543210" className="text-gray-600 text-sm hover:text-orange-500 transition-colors">
-                                +91 98765 43210
+                                +91 78190 00308
                             </a>
                             <p className="text-gray-500 text-xs mt-1">6AM-10PM, 7 days a week</p>
                         </div>
@@ -234,8 +236,8 @@ const CustomerSupportPage = () => {
                         </div>
                         <div>
                             <h3 className="font-medium text-gray-900 mb-1 text-sm">Dispatch Center</h3>
-                            <p className="text-gray-600 text-sm">Construction Logistics Hub, Delhi NCR</p>
-                            <p className="text-gray-500 text-xs mt-1">For material pickup coordination</p>
+                            <p className="text-gray-600 text-sm">CHAWLA AUTO COMPONENTS</p>
+                            <p className="text-gray-500 text-xs mt-1">Plot no 39, 49, 41 sector IIDC, U.S. Nagar, Uttarakhand</p>
                         </div>
                     </div>
                 </div>

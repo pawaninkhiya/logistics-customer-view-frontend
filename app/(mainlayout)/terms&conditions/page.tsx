@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Button from "@/components/ui/Button";
 import { Icons } from "@/assets/icons";
 
 const TermsAndConditionsPage = () => {
+    const topRef = useRef<HTMLDivElement>(null);
+
+    const scrollToTop = () => {
+        topRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
     return (
-        <div className="max-w-6xl w-full mx-auto sm:px-6 py-8">
+        <div className="max-w-6xl w-full mx-auto sm:px-6 py-8"  ref={topRef}>
             {/* Heading */}
             <div className="mb-12 text-center">
                 <div className="mx-auto flex items-center justify-center w-16 h-16 bg-orange-50 rounded-full mb-4">
@@ -30,7 +35,7 @@ const TermsAndConditionsPage = () => {
                             Important Notice
                         </h2>
                         <p className="text-gray-600 text-sm">
-                            These terms govern your use of our construction material transport services within 100km radius. By booking vehicles, you agree to these terms.
+                            These terms govern your use of our construction material transport services. By booking vehicles, you agree to these terms.
                         </p>
                     </div>
                 </div>
@@ -151,7 +156,7 @@ const TermsAndConditionsPage = () => {
                     <Button
                         variant="primary"
                         className="w-full sm:w-auto"
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        onClick={scrollToTop}
                     >
                         <Icons.ArrowUp className="mr-2 h-4 w-4" />
                         Back to Top
@@ -160,7 +165,7 @@ const TermsAndConditionsPage = () => {
 
                 <div className="mt-6 pt-6 border-t border-gray-200 text-xs text-gray-500">
                     <p>
-                        For disputes: operations@constructionlogistics.com or +91 98765 43210
+                        For disputes: operations@constructionlogistics.com or +91 78190 00308
                     </p>
                 </div>
             </div>
