@@ -6,13 +6,13 @@ interface TripDetailsProps {
 
 export const TripDetails = ({ trip }: TripDetailsProps) => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mt-4 text-sm">
-        <div className="flex items-start gap-3 col-span-2">
+        <div className="flex items-start md:items-center gap-3 col-span-2">
             <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
                 <Icons.Map className="text-sm" />
             </div>
             <div>
-                <p className="text-gray-800">
-                    {trip.from} → {trip.to} ({trip.distance} km)
+                <p className="text-gray-800 font-semibold text-sm">
+                    <span className="text-orange-500">{trip.from}</span> <span className="text-xl mx-2">→</span> <span className="text-green-500">{trip.to}</span> ({trip.distance} km)
                 </p>
             </div>
         </div>

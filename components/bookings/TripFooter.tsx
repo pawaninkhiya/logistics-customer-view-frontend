@@ -1,3 +1,5 @@
+import { Icons } from "@/assets/assets";
+
 interface TripFooterProps {
     hasAcceptedDriver: boolean;
 }
@@ -17,8 +19,8 @@ export const TripFooter = ({ hasAcceptedDriver }: TripFooterProps) => (
                 </>
             )}
         </div>
-        <button className="text-sm font-medium text-blue-600 hover:text-blue-800">
-            View Details
-        </button>
+    {/* <button className="text-xs font-medium flex items-center gap-2 text-white rounded-md bg-black hover:bg-gray-800 transition-colors py-2 px-5">
+            View <Icons.ArrowRight className="w-3 h-3" />
+        </button> */}
     </div>
 );

@@ -3,7 +3,7 @@ import { TripDetails } from "./TripDetails";
 import { TripFooter } from "./TripFooter";
 
 interface TripCardProps {
-    trip: any; // Replace 'any' with your actual trip type
+    trip: any; 
 }
 
 export const TripCard = ({ trip }: TripCardProps) => {

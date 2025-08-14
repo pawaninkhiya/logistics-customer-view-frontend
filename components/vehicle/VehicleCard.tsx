@@ -21,9 +21,9 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect }) => {
     return (
         <div
             onClick={() => onSelect(vehicle._id)}
-            className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-all cursor-pointer group w-full bg-white"
+            className="flex items-center gap-3 p-4  rounded-md md:hover:scale-95 duration-200 shadow transition-all cursor-pointer group w-full bg-white"
         >
-            <div className="relative w-20 h-14 sm:w-24 sm:h-16 flex-shrink-0">
+            <div className="relative w-20 h-14 sm:w-24 sm:h-20 flex-shrink-0">
                 <Image
                     src={vehicle.vehicle_image || noImage}
                     alt={vehicle.name}

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import VehicleCard, { VehicleType } from '@/components/vehicle/VehicleCard';
 import VehicleSkeleton from '@/components/vehicle/VehicleSkeleton';
 import VehicleError from '@/components/vehicle/VehicleError';
-import  gifLoader from "@assets/truck_loader.gif"
+
 const SelectVehicaleType = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -51,15 +51,13 @@ const SelectVehicaleType = () => {
     };
 
     return (
-        <div className="flex flex-col mt-4 gap-6 p-4 xl:p-6 w-full 2xl:shadow 2xl:border 2xl:border-gray-100 rounded-tl-3xl sm:rounded-md bg-gray-50">
-            {/* Header */}
+        <div className="flex flex-col mt-4 gap-6 p-4 xl:p-6 w-full 2xl:shadow sm:rounded-md bg-gray-50">
             <div className="flex items-center gap-3 flex-wrap">
-                <FaTruck className="text-lg sm:text-xl text-blue-600" />
+                <p className='bg-orange-100 p-2 rounded-full'><FaTruck className="text-sm text-orange-500" /></p>
                 <h1 className="font-semibold text-gray-800">Select Vehicle</h1>
                 <FaInfoCircle className="text-gray-500 ml-auto" />
             </div>
 
-            {/* Loading */}
             {isLoading && (
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
                     {[...Array(8)].map((_, i) => (
@@ -67,13 +65,10 @@ const SelectVehicaleType = () => {
                     ))}
                 </div>
             )}
-
-            {/* Error */}
             {error && (
                 <VehicleError message="Failed to load vehicle types. Please try again." />
             )}
 
-            {/* List */}
             {!isLoading && !error && (
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
                     {data?.data?.map((vehicle: VehicleType) => (
