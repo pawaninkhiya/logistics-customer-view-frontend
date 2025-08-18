@@ -1,25 +1,10 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useAuth } from "@/contexts/AuthProvider";
-
 import logo from "@assets/logo.svg";
 import LoginHeader from "@/components/auth/LoginHeader";
 import LoginForm from "@/components/auth/LoginForm";
 
 const Login = () => {
-    const router = useRouter();
-    const { isAuthenticated, isLoading: authLoading } = useAuth();
-
-    useEffect(() => {
-        if (!authLoading && isAuthenticated) {
-            router.push('/');
-        }
-    }, [authLoading, isAuthenticated, router]);
-
-    if (authLoading || isAuthenticated) return null;
-
     return (
         <div className="min-h-screen flex items-center justify-center md:bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md bg-white rounded-xl md:shadow-sm p-4 md:p-8 space-y-8">

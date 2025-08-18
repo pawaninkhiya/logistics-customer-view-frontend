@@ -50,7 +50,7 @@ const TermsAndConditionsPage = () => {
                             <Icons.Truck className="h-5 w-5 text-orange-500" />
                             1. Transport Services
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <p>
                                 We provide local transport solutions for construction materials including trucks, pickups, Chota Hathis, and e-loaders within 100km radius.
                             </p>
@@ -68,7 +68,7 @@ const TermsAndConditionsPage = () => {
                             <Icons.Box className="h-5 w-5 text-orange-500" />
                             2. Customer Responsibilities
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <ul className="list-disc pl-5 space-y-2">
                                 <li>Accurate declaration of material type, weight, and dimensions</li>
                                 <li>Proper packaging and securing of construction materials</li>
@@ -84,7 +84,7 @@ const TermsAndConditionsPage = () => {
                             <Icons.IndianRupee className="h-5 w-5 text-orange-500" />
                             3. Pricing & Payments
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <ul className="list-disc pl-5 space-y-2">
                                 <li>Rates based on vehicle type, distance, and material weight</li>
                                 <li>GST applicable on all freight charges (unless cash payment)</li>
@@ -100,7 +100,7 @@ const TermsAndConditionsPage = () => {
                             <Icons.Shield className="h-5 w-5 text-orange-500" />
                             4. Liability & Claims
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <ul className="list-disc pl-5 space-y-2">
                                 <li>₹10,000 maximum liability per vehicle load</li>
                                 <li>Material damage claims must be reported within 24 hours</li>
@@ -116,7 +116,7 @@ const TermsAndConditionsPage = () => {
                             <Icons.AlertOctagon className="h-5 w-5 text-orange-500" />
                             5. Restricted Materials
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <ul className="list-disc pl-5 space-y-2">
                                 <li>Explosives or flammable construction materials</li>
                                 <li>Hazardous chemicals without proper documentation</li>
@@ -132,7 +132,7 @@ const TermsAndConditionsPage = () => {
                             <Icons.Clock className="h-5 w-5 text-orange-500" />
                             6. Cancellation Policy
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <ul className="list-disc pl-5 space-y-2">
                                 <li>Free cancellation up to 2 hours before scheduled pickup</li>
                                 <li>50% charge for cancellations within 2 hours</li>

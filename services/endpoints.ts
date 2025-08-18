@@ -2,11 +2,11 @@
 export const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 // ------------------ Customers Endpoints ------------------
 export const CUSTOMER_ENDPOINTS = {
-    LOGIN: '/apps/login',
-    VERIFY_OTP: '/apps/login',
-    UPDATE: '/customer/',
-    GET_BY_ID: (id: string) => `/users/${id}`,
-    UPDATE_CUSTOMER: (id: string) => `/users/${id}`,
+    REQUEST_OTP: '/auth/otp/login',
+    VERIFY_OTP: '/auth/otp/login',
+    GET_USER: `/auth/user`,
+    LOGOUT: '/auth/logout',
+    UPDATE_CUSTOMER: (id: string) => `/customer/${id}`,
 };
 
 // ------------------ MaterialTypes Endpoints ------------------

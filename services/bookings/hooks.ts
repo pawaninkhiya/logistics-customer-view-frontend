@@ -16,5 +16,6 @@ export const useGetAllTripsQuery = (params: { user?: string}) => {
     return useQuery({
         queryKey: ["Trips", params],
         queryFn: () => getAllTrips(params),
+        enabled: Boolean(params.user),
     });
 };

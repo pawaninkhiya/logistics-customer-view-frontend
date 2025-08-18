@@ -38,7 +38,7 @@ const CustomerSupportPage = () => {
                 <div className="mx-auto flex items-center justify-center w-16 h-16 bg-orange-50 rounded-full mb-4">
                     <Icons.Headphones className="h-8 w-8 text-orange-500" />
                 </div>
-                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                <h1 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
                     Construction Logistics Support
                 </h1>
                 <p className="text-gray-600 text-sm 2xl:text-base mx-auto leading-relaxed">
@@ -138,7 +138,7 @@ const CustomerSupportPage = () => {
             {/* Contact Form */}
             <div className="bg-white rounded-md border border-gray-200 p-6 sm:p-8 shadow-sm mb-10">
                 <div className="mb-6">
-                    <h2 className="text-lg font-semibold text-gray-900 mb-2">Submit a Request</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Submit a Request</h2>
                     <p className="text-gray-600 text-sm">
                         Include your order ID or vehicle number for faster resolution. Our logistics team typically responds within 1 hour.
                     </p>
@@ -201,7 +201,7 @@ const CustomerSupportPage = () => {
 
             {/* Contact Information */}
             <div className="bg-gray-50 rounded-md p-6 sm:p-8 border border-gray-200">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">Contact Our Logistics Team</h2>
+                <h2 className="xl:text-xl text-base font-semibold text-gray-900 mb-4">Contact Our Logistics Team</h2>
                 <div className="grid gap-6 sm:grid-cols-2 text-sm">
                     <div className="flex items-start gap-4">
                         <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">

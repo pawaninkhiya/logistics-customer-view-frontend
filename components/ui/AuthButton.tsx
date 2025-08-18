@@ -14,7 +14,7 @@ const AuthButton = forwardRef<HTMLButtonElement, AuthButtonProps>(({ className =
             ref={ref}
             type="submit"
             className={`
-             w-full px-4 py-3 col-span-2 bg-black text-white text-xs sm:text-sm font-mediumhover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-black/50 rounded-md disabled:opacity-80 flex items-center justify-center gap-2 transition-all duration-200 ease-in-out active:scale-[0.98] active:opacity-90 font-medium ${className}`}
+             w-full px-4 py-3 col-span-2 bg-black text-white text-sm font-mediumhover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-black/50 rounded-md disabled:opacity-80 flex items-center justify-center gap-2 transition-all duration-200 ease-in-out active:scale-[0.98] active:opacity-90 font-medium ${className}`}
             disabled={loading || props.disabled}
             aria-busy={loading}
             {...props}

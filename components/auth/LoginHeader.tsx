@@ -13,7 +13,7 @@ const LoginHeader = ({ logo }: Props) => {
             <h2 className="mt-6 text-lg sm:text-2xl font-bold text-gray-900">
                 Login Here
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-gray-600">
+            <p className="mt-2 text-sm text-gray-600">
                 Enter your mobile number to receive OTP
             </p>
         </div>

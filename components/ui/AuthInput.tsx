@@ -70,7 +70,7 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
             <div className={`flex flex-col gap-2 ${className}`}>
                 <label
                     htmlFor={id}
-                    className="text-xs sm:text-sm font-medium text-gray-700"
+                    className="text-sm font-medium text-gray-700"
                     aria-invalid={showError ? "true" : "false"}
                 >
                     {label}
@@ -85,7 +85,7 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
                         aria-invalid={showError ? "true" : "false"}
                         aria-describedby={showError ? `${id}-error` : undefined}
                         className={`
-                         w-full px-4 py-3 text-xs placeholder:text-xs  sm:placeholder:text-sm  sm:text-sm border rounded-md
+                         w-full px-4 py-3   sm:placeholder:text-sm  text-sm border rounded-md
                          focus:outline-none 
                          transition-all duration-200 ease-in-out
                          ${showError ? "border-red-500 focus:ring-2 focus:ring-red-500" : "border-gray-300 focus:ring-2 focus:ring-black/50 hover:border-gray-400"} font-medium placeholder:font-medium ${inputClass || ""}`}

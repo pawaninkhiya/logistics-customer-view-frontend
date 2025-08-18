@@ -1,6 +1,5 @@
 "use client";
-import { FaCheckCircle, FaHome, FaTruck } from 'react-icons/fa';
-import Link from 'next/link';
+import { FaCheckCircle, FaHome,  } from 'react-icons/fa';
 import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 

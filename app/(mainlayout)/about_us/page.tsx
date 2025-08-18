@@ -11,7 +11,7 @@ const AboutUsPage = () => {
                 <div className="mx-auto flex items-center justify-center w-16 h-16 bg-orange-50 rounded-full mb-4">
                     <Icons.Building className="h-8 w-8 text-orange-500" />
                 </div>
-                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                <h1 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
                     About Our Construction Logistics
                 </h1>
                 <p className="text-gray-600 text-sm 2xl:text-base mx-auto leading-relaxed max-w-3xl">
@@ -41,11 +41,11 @@ const AboutUsPage = () => {
                 <div className="space-y-8">
                     {/* Our Story */}
                     <div>
-                        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <h2 className=" text-base sm:text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                             <Icons.History className="h-5 w-5 text-orange-500" />
                             Our Story
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <p>
                                 Founded in 2015, we started with just 2 trucks serving local hardware stores. Today, we operate a fleet of 50+ vehicles specializing in construction material transport across Delhi NCR.
                             </p>
@@ -60,11 +60,11 @@ const AboutUsPage = () => {
 
                     {/* Our Fleet */}
                     <div className="pt-6 border-t border-gray-100">
-                        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <h2 className=" text-base sm:text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                             <Icons.Truck className="h-5 w-5 text-orange-500" />
                             Our Fleet
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <p>
                                 We maintain a diverse fleet to handle all construction material needs:
                             </p>
@@ -79,11 +79,11 @@ const AboutUsPage = () => {
 
                     {/* Our Approach */}
                     <div className="pt-6 border-t border-gray-100">
-                        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <h2 className=" text-base sm:text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                             <Icons.Lightbulb className="h-5 w-5 text-orange-500" />
                             Our Approach
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <ul className="list-disc pl-5 space-y-2">
                                 <li><strong>Construction Specialists:</strong> Drivers trained in material handling</li>
                                 <li><strong>Site-Ready:</strong> Vehicles equipped for rough terrain access</li>
@@ -95,11 +95,11 @@ const AboutUsPage = () => {
 
                     {/* Our Team */}
                     <div className="pt-6 border-t border-gray-100">
-                        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <h2 className=" text-base sm:text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                             <Icons.User className="h-5 w-5 text-orange-500" />
                             Our Team
                         </h2>
-                        <div className="text-gray-600 text-sm space-y-3 pl-7">
+                        <div className="text-gray-600 text-sm space-y-3 sm:pl-7">
                             <p>
                                 50+ professionals dedicated to your construction logistics:
                             </p>
@@ -116,7 +116,7 @@ const AboutUsPage = () => {
 
             {/* CTA Section */}
             <div className="bg-gray-50 rounded-md p-6 sm:p-8 border border-gray-200">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">Ready to Streamline Your Construction Logistics?</h2>
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Ready to Streamline Your Construction Logistics?</h2>
                 <div className="text-gray-600 text-sm mb-6">
                     <p>
                         Join 500+ construction businesses who trust us with their material transport needs.

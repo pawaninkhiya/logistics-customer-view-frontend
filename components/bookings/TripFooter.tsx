@@ -1,4 +1,3 @@
-import { Icons } from "@/assets/assets";
 
 interface TripFooterProps {
     hasAcceptedDriver: boolean;

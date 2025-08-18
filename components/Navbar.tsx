@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
-    const { logout } = useAuth();
+    const { logoutMutation } = useAuth();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const pathname = usePathname()
 
@@ -66,7 +66,7 @@ const Navbar = () => {
                         <div className="flex gap-2 items-center">
                             <div className='h-8 border-l-2 border-gray-300'></div>
                             <button
-                                onClick={() => logout()}
+                                onClick={() => logoutMutation.mutateAsync()}
                                 className="transition-colors cursor-pointer bg-black rounded p-2 text-white hover:bg-gray-800"
                                 aria-label="Logout"
                             >
@@ -146,7 +146,7 @@ const Navbar = () => {
                             <button
                                 className="block w-full text-left px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-orange-600 transition-colors"
                                 onClick={() => {
-                                    logout();
+                                    logoutMutation.mutateAsync();
                                     setMobileMenuOpen(false);
                                 }}
                             >

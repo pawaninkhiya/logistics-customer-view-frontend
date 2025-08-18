@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 import { useCallback, useState, FormEvent } from "react";
-import { useAuth } from "@/contexts/AuthProvider";
 import AuthInput from "@/components/ui/AuthInput";
 import AuthButton from "@/components/ui/AuthButton";
 import toast from "react-hot-toast";
 import ChangeOtpActions from "./ChangeOtpActions";
+import { useAuth } from "@/contexts/AuthProvider";
 
 type FormState = {
     mobileNumber: string;
@@ -14,10 +14,7 @@ type FormState = {
 };
 
 const LoginForm = () => {
-    const {
-        loginMutation,
-        verifyOTPMutation
-    } = useAuth();
+    const { loginSendOtpMutation, verifyOTPMutation } = useAuth();
 
     const [state, setState] = useState<FormState>({
         mobileNumber: "",
@@ -26,7 +23,7 @@ const LoginForm = () => {
     });
 
     const handleStateUpdate = useCallback((newState: Partial<FormState>) => {
-        setState(prev => ({ ...prev, ...newState }));
+        setState((prev) => ({ ...prev, ...newState }));
     }, []);
 
     const validateMobileNumber = (number: string) => {
@@ -58,10 +55,14 @@ const LoginForm = () => {
         if (!validateMobileNumber(state.mobileNumber)) return;
 
         try {
-            await loginMutation.mutateAsync(state.mobileNumber);
+            await loginSendOtpMutation.mutateAsync({ contact_no: state.mobileNumber });
             handleStateUpdate({ showOtpField: true });
         } catch (err: any) {
-            toast.error(err?.response?.data?.message || err.message || "Failed to send OTP");
+            toast.error(
+                err?.response?.data?.message ||
+                err.message ||
+                "Failed to send OTP"
+            );
         }
     };
 
@@ -71,11 +72,15 @@ const LoginForm = () => {
 
         try {
             await verifyOTPMutation.mutateAsync({
-                contact_no: Number(state.mobileNumber),
-                verification_code: Number(state.otp),
+                contact_no: state.mobileNumber,
+                verification_code: state.otp,
             });
         } catch (err: any) {
-            toast.error(err?.response?.data?.message || err.message || "Login failed. Please try again.");
+            toast.error(
+                err?.response?.data?.message ||
+                err.message ||
+                "Login failed. Please try again."
+            );
         }
     };
 
@@ -85,10 +90,13 @@ const LoginForm = () => {
 
     const isLoading = state.showOtpField
         ? verifyOTPMutation.isPending
-        : loginMutation.isPending;
+        : loginSendOtpMutation.isPending;
 
     return (
-        <form className="mt-4 space-y-6" onSubmit={state.showOtpField ? handleLoginSubmit : handleSendOtp}>
+        <form
+            className="mt-4 space-y-6"
+            onSubmit={state.showOtpField ? handleLoginSubmit : handleSendOtp}
+        >
             <div className="space-y-4">
                 {!state.showOtpField && (
                     <AuthInput
@@ -96,7 +104,9 @@ const LoginForm = () => {
                         label="Mobile Number"
                         type="tel"
                         value={state.mobileNumber}
-                        onChange={(e) => handleStateUpdate({ mobileNumber: e.target.value })}
+                        onChange={(e) =>
+                            handleStateUpdate({ mobileNumber: e.target.value })
+                        }
                         placeholder="Enter 10-digit mobile number"
                         showError={false}
                         error=""
