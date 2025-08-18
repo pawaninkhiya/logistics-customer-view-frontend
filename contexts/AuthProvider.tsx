@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import { useMutation, useQuery, useQueryClient, UseMutationResult } from '@tanstack/react-query'
 import { login, verifyOTP, getProfile, logout } from '@/services/customers/customers'
 import { useRouter } from 'next/navigation'
-import { Customer, LoginOtpResponse, OtpVerifiedResponse } from '@/types/userTypes'
+import { Customer, LoginOtpResponse, OtpVerifiedResponse, UserResponse } from '@/types/userTypes'
 
 type AuthContextType = {
     user: Customer | null
@@ -11,6 +11,7 @@ type AuthContextType = {
     loginSendOtpMutation: UseMutationResult<LoginOtpResponse, unknown, { contact_no: string }>
     verifyOTPMutation: UseMutationResult<OtpVerifiedResponse, unknown, { contact_no: string; verification_code: string }>
     logoutMutation: UseMutationResult<any, unknown, void>
+    profileQuery: ReturnType<typeof useQuery>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -20,7 +21,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const router = useRouter()
     const queryClient = useQueryClient()
 
-    const profileQuery = useQuery({
+    const profileQuery = useQuery<UserResponse>({
         queryKey: ['profile'],
         queryFn: getProfile,
         staleTime: 0,
@@ -33,7 +34,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setUser(null)
 
         }
-    }, [profileQuery.status])
+    }, [profileQuery.status , profileQuery.data])
 
     const loginSendOtpMutation = useMutation({
         mutationFn: (credentials: { contact_no: string }) => login(credentials),
@@ -63,6 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         loginSendOtpMutation,
         verifyOTPMutation,
         logoutMutation,
+        profileQuery,
     }
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

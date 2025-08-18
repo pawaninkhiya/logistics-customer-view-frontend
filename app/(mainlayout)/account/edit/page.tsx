@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import profile from "@assets/profile.png";
@@ -11,9 +11,9 @@ import { useUpdateCustomerMutation } from '@/services/customers/hooks';
 import toast from 'react-hot-toast';
 
 const EditProfilePage = () => {
-    const { user } = useAuth();
+    const { user, profileQuery } = useAuth();
     const { mutateAsync, isPending } = useUpdateCustomerMutation();
-
+    console.log(user);
     const [formData, setFormData] = useState({
         email: user?.email || '',
         fullname: user?.fullname || '',
@@ -28,6 +28,18 @@ const EditProfilePage = () => {
             [name]: value
         }));
     };
+
+    useEffect(() => {
+        if (profileQuery.isSuccess) {
+            setFormData({
+                email: user?.email || '',
+                fullname: user?.fullname || '',
+                username: user?.username || '',
+                contact_no: user?.contact_no || ''
+            });
+        }
+    }, [user, profileQuery.isSuccess]);
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -64,6 +76,7 @@ const EditProfilePage = () => {
         try {
             await mutateAsync({ _id: user._id, payload: formDataPayload });
             toast.success("Profile updated successfully");
+            profileQuery.refetch();
         } catch (error) {
             console.error("Error updating profile:", error);
         }

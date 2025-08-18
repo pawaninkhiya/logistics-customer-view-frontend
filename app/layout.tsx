@@ -4,6 +4,7 @@ import { Sora } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/contexts/QueryProvider";
 import { AuthProvider } from "@/contexts/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 const sora = Sora({
     subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className={`${sora.variable} ${sora.className} antialiased`}>
                 <QueryProvider>
                     <AuthProvider>
+                        <Toaster/>
                         {children}
                     </AuthProvider>
                 </QueryProvider>

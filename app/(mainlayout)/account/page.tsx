@@ -15,10 +15,6 @@ const ProfilePage = () => {
 
     const handleDeleteAccount = async () => {
         try {
-            // Call your API to delete account
-            // await deleteAccount();
-            // logout();
-            // router.push('/');
             toast.success('Account deleted successfully');
         } catch (error) {
             console.error('Failed to delete account:', error);
@@ -32,6 +28,7 @@ const ProfilePage = () => {
         { title: 'History', description: 'View your activity history', href: '/history' },
         { title: 'Customer Support', description: 'Get help with your account', href: '/customer&support' },
         { title: 'Terms & Conditions', description: 'Read our terms of service', href: '/terms&conditions' },
+        { title: 'Privacy &Policy', description: 'Read our terms of service', href: '/privacy&policy' },
         { title: 'About Us', description: 'Learn more about our company', href: '/about_us' },
         {
             title: 'Delete My Account',

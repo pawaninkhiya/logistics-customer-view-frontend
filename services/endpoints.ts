@@ -6,7 +6,7 @@ export const CUSTOMER_ENDPOINTS = {
     VERIFY_OTP: '/auth/otp/login',
     GET_USER: `/auth/user`,
     LOGOUT: '/auth/logout',
-    UPDATE_CUSTOMER: (id: string) => `/customer/${id}`,
+    UPDATE_CUSTOMER: (id: string) => `/users/${id}`,
 };
 
 // ------------------ MaterialTypes Endpoints ------------------
