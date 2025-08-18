@@ -15,36 +15,35 @@ const PROTECTED_ROUTES = [
 ];
 
 
-
+// middleware.ts
 export async function middleware(req: NextRequest) {
     const token = req.cookies.get('auth_token')?.value;
     const { pathname } = req.nextUrl;
 
-    // Special case: prevent login redirect loop
-    if (pathname === '/login' && token) {
-        return NextResponse.redirect(new URL('/', req.url));
+    if (pathname.startsWith('/api')) {
+        return NextResponse.next();
     }
 
-    const isPublicRoute = PUBLIC_ROUTES.some(route =>
-        pathname.startsWith(route)
-    );
-    const isProtectedRoute = PROTECTED_ROUTES.some(route =>
-        pathname.startsWith(route)
-    );
-
-    // If trying to access protected route without token
-    if (isProtectedRoute && !token) {
-        // Only redirect if not already going to login
-        if (pathname !== '/login') {
-            const redirectUrl = new URL('/login', req.url);
-            redirectUrl.searchParams.set('redirect', pathname);
-            return NextResponse.redirect(redirectUrl);
+    // Handle login redirects
+    if (pathname === '/login') {
+        if (token) {
+            const redirectTo = req.nextUrl.searchParams.get('redirect') || '/';
+            return NextResponse.redirect(new URL(redirectTo, req.url));
         }
+        return NextResponse.next();
+    }
+
+    // Check protected routes
+    const isProtected = PROTECTED_ROUTES.some(route => pathname.startsWith(route));
+
+    if (isProtected && !token) {
+        const loginUrl = new URL('/login', req.url);
+        loginUrl.searchParams.set('redirect', pathname);
+        return NextResponse.redirect(loginUrl);
     }
 
     return NextResponse.next();
 }
-
 export const config = {
     matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
