@@ -14,10 +14,16 @@ const PROTECTED_ROUTES = [
     '/create_booking/booking_confirm/success'
 ];
 
-// Update your middleware to actually verify the token
+
+
 export async function middleware(req: NextRequest) {
     const token = req.cookies.get('auth_token')?.value;
     const { pathname } = req.nextUrl;
+
+    // Special case: prevent login redirect loop
+    if (pathname === '/login' && token) {
+        return NextResponse.redirect(new URL('/', req.url));
+    }
 
     const isPublicRoute = PUBLIC_ROUTES.some(route =>
         pathname.startsWith(route)
@@ -26,31 +32,22 @@ export async function middleware(req: NextRequest) {
         pathname.startsWith(route)
     );
 
-    // Add token verification
-    let isValidToken = false;
-    if (token) {
-        try {
-            // Add your token verification logic here
-            // For example, make an API call to verify token
-            // or decode JWT if you're using it
-            isValidToken = true; // Replace with actual verification
-        } catch (error) {
-            isValidToken = false;
+    // If trying to access protected route without token
+    if (isProtectedRoute && !token) {
+        // Only redirect if not already going to login
+        if (pathname !== '/login') {
+            const redirectUrl = new URL('/login', req.url);
+            redirectUrl.searchParams.set('redirect', pathname);
+            return NextResponse.redirect(redirectUrl);
         }
-    }
-
-    if (isPublicRoute && isValidToken) {
-        return NextResponse.redirect(new URL('/', req.url));
-    }
-
-    if (isProtectedRoute && !isValidToken) {
-        const redirectUrl = new URL('/login', req.url);
-        redirectUrl.searchParams.set('redirect', pathname);
-        return NextResponse.redirect(redirectUrl);
     }
 
     return NextResponse.next();
 }
+
+export const config = {
+    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+};
 // import { NextResponse } from 'next/server';
 // import type { NextRequest } from 'next/server';
 
